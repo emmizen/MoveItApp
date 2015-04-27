@@ -1,0 +1,448 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		20FD30DB1AEE599100C1DB4C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FD30DA1AEE599100C1DB4C /* main.m */; };
+		20FD30DE1AEE599100C1DB4C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FD30DD1AEE599100C1DB4C /* AppDelegate.m */; };
+		20FD30E11AEE599100C1DB4C /* MoveItApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 20FD30DF1AEE599100C1DB4C /* MoveItApp.xcdatamodeld */; };
+		20FD30E41AEE599100C1DB4C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FD30E31AEE599100C1DB4C /* ViewController.m */; };
+		20FD30E71AEE599100C1DB4C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20FD30E51AEE599100C1DB4C /* Main.storyboard */; };
+		20FD30E91AEE599100C1DB4C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20FD30E81AEE599100C1DB4C /* Images.xcassets */; };
+		20FD30EC1AEE599100C1DB4C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20FD30EA1AEE599100C1DB4C /* LaunchScreen.xib */; };
+		20FD30F81AEE599100C1DB4C /* MoveItAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FD30F71AEE599100C1DB4C /* MoveItAppTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		20FD30F21AEE599100C1DB4C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 20FD30CD1AEE599100C1DB4C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 20FD30D41AEE599100C1DB4C;
+			remoteInfo = MoveItApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		20FD30D51AEE599100C1DB4C /* MoveItApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoveItApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		20FD30D91AEE599100C1DB4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20FD30DA1AEE599100C1DB4C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		20FD30DC1AEE599100C1DB4C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		20FD30DD1AEE599100C1DB4C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		20FD30E01AEE599100C1DB4C /* MoveItApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MoveItApp.xcdatamodel; sourceTree = "<group>"; };
+		20FD30E21AEE599100C1DB4C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		20FD30E31AEE599100C1DB4C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		20FD30E61AEE599100C1DB4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		20FD30E81AEE599100C1DB4C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		20FD30EB1AEE599100C1DB4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		20FD30F11AEE599100C1DB4C /* MoveItAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoveItAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		20FD30F61AEE599100C1DB4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20FD30F71AEE599100C1DB4C /* MoveItAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoveItAppTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		20FD30D21AEE599100C1DB4C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		20FD30EE1AEE599100C1DB4C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		20FD30CC1AEE599100C1DB4C = {
+			isa = PBXGroup;
+			children = (
+				20FD30D71AEE599100C1DB4C /* MoveItApp */,
+				20FD30F41AEE599100C1DB4C /* MoveItAppTests */,
+				20FD30D61AEE599100C1DB4C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		20FD30D61AEE599100C1DB4C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				20FD30D51AEE599100C1DB4C /* MoveItApp.app */,
+				20FD30F11AEE599100C1DB4C /* MoveItAppTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		20FD30D71AEE599100C1DB4C /* MoveItApp */ = {
+			isa = PBXGroup;
+			children = (
+				20FD30DC1AEE599100C1DB4C /* AppDelegate.h */,
+				20FD30DD1AEE599100C1DB4C /* AppDelegate.m */,
+				20FD30E21AEE599100C1DB4C /* ViewController.h */,
+				20FD30E31AEE599100C1DB4C /* ViewController.m */,
+				20FD30E51AEE599100C1DB4C /* Main.storyboard */,
+				20FD30E81AEE599100C1DB4C /* Images.xcassets */,
+				20FD30EA1AEE599100C1DB4C /* LaunchScreen.xib */,
+				20FD30DF1AEE599100C1DB4C /* MoveItApp.xcdatamodeld */,
+				20FD30D81AEE599100C1DB4C /* Supporting Files */,
+			);
+			path = MoveItApp;
+			sourceTree = "<group>";
+		};
+		20FD30D81AEE599100C1DB4C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				20FD30D91AEE599100C1DB4C /* Info.plist */,
+				20FD30DA1AEE599100C1DB4C /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		20FD30F41AEE599100C1DB4C /* MoveItAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				20FD30F71AEE599100C1DB4C /* MoveItAppTests.m */,
+				20FD30F51AEE599100C1DB4C /* Supporting Files */,
+			);
+			path = MoveItAppTests;
+			sourceTree = "<group>";
+		};
+		20FD30F51AEE599100C1DB4C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				20FD30F61AEE599100C1DB4C /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		20FD30D41AEE599100C1DB4C /* MoveItApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 20FD30FB1AEE599100C1DB4C /* Build configuration list for PBXNativeTarget "MoveItApp" */;
+			buildPhases = (
+				20FD30D11AEE599100C1DB4C /* Sources */,
+				20FD30D21AEE599100C1DB4C /* Frameworks */,
+				20FD30D31AEE599100C1DB4C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MoveItApp;
+			productName = MoveItApp;
+			productReference = 20FD30D51AEE599100C1DB4C /* MoveItApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		20FD30F01AEE599100C1DB4C /* MoveItAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 20FD30FE1AEE599100C1DB4C /* Build configuration list for PBXNativeTarget "MoveItAppTests" */;
+			buildPhases = (
+				20FD30ED1AEE599100C1DB4C /* Sources */,
+				20FD30EE1AEE599100C1DB4C /* Frameworks */,
+				20FD30EF1AEE599100C1DB4C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				20FD30F31AEE599100C1DB4C /* PBXTargetDependency */,
+			);
+			name = MoveItAppTests;
+			productName = MoveItAppTests;
+			productReference = 20FD30F11AEE599100C1DB4C /* MoveItAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		20FD30CD1AEE599100C1DB4C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = EmmaJohansson;
+				TargetAttributes = {
+					20FD30D41AEE599100C1DB4C = {
+						CreatedOnToolsVersion = 6.3.1;
+					};
+					20FD30F01AEE599100C1DB4C = {
+						CreatedOnToolsVersion = 6.3.1;
+						TestTargetID = 20FD30D41AEE599100C1DB4C;
+					};
+				};
+			};
+			buildConfigurationList = 20FD30D01AEE599100C1DB4C /* Build configuration list for PBXProject "MoveItApp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 20FD30CC1AEE599100C1DB4C;
+			productRefGroup = 20FD30D61AEE599100C1DB4C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				20FD30D41AEE599100C1DB4C /* MoveItApp */,
+				20FD30F01AEE599100C1DB4C /* MoveItAppTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		20FD30D31AEE599100C1DB4C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20FD30E71AEE599100C1DB4C /* Main.storyboard in Resources */,
+				20FD30EC1AEE599100C1DB4C /* LaunchScreen.xib in Resources */,
+				20FD30E91AEE599100C1DB4C /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		20FD30EF1AEE599100C1DB4C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		20FD30D11AEE599100C1DB4C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20FD30DE1AEE599100C1DB4C /* AppDelegate.m in Sources */,
+				20FD30DB1AEE599100C1DB4C /* main.m in Sources */,
+				20FD30E41AEE599100C1DB4C /* ViewController.m in Sources */,
+				20FD30E11AEE599100C1DB4C /* MoveItApp.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		20FD30ED1AEE599100C1DB4C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20FD30F81AEE599100C1DB4C /* MoveItAppTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		20FD30F31AEE599100C1DB4C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 20FD30D41AEE599100C1DB4C /* MoveItApp */;
+			targetProxy = 20FD30F21AEE599100C1DB4C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		20FD30E51AEE599100C1DB4C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				20FD30E61AEE599100C1DB4C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		20FD30EA1AEE599100C1DB4C /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				20FD30EB1AEE599100C1DB4C /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		20FD30F91AEE599100C1DB4C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		20FD30FA1AEE599100C1DB4C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		20FD30FC1AEE599100C1DB4C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = MoveItApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		20FD30FD1AEE599100C1DB4C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = MoveItApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		20FD30FF1AEE599100C1DB4C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MoveItAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MoveItApp.app/MoveItApp";
+			};
+			name = Debug;
+		};
+		20FD31001AEE599100C1DB4C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MoveItAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MoveItApp.app/MoveItApp";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		20FD30D01AEE599100C1DB4C /* Build configuration list for PBXProject "MoveItApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				20FD30F91AEE599100C1DB4C /* Debug */,
+				20FD30FA1AEE599100C1DB4C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		20FD30FB1AEE599100C1DB4C /* Build configuration list for PBXNativeTarget "MoveItApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				20FD30FC1AEE599100C1DB4C /* Debug */,
+				20FD30FD1AEE599100C1DB4C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		20FD30FE1AEE599100C1DB4C /* Build configuration list for PBXNativeTarget "MoveItAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				20FD30FF1AEE599100C1DB4C /* Debug */,
+				20FD31001AEE599100C1DB4C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		20FD30DF1AEE599100C1DB4C /* MoveItApp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				20FD30E01AEE599100C1DB4C /* MoveItApp.xcdatamodel */,
+			);
+			currentVersion = 20FD30E01AEE599100C1DB4C /* MoveItApp.xcdatamodel */;
+			path = MoveItApp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 20FD30CD1AEE599100C1DB4C /* Project object */;
+}
