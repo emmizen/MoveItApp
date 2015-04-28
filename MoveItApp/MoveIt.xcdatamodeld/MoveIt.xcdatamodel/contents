@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7549" systemVersion="14D136" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Address" representedClassName="Address" syncable="YES">
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="postalCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="streetAddress" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Customer" representedClassName="Customer" syncable="YES">
+        <attribute name="eMail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phoneNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="orders" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Order" inverseName="customer" inverseEntity="Order" syncable="YES"/>
+        <relationship name="quotations" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Quotation" inverseName="customer" inverseEntity="Quotation" syncable="YES"/>
+    </entity>
+    <entity name="Order" representedClassName="Order" syncable="YES">
+        <relationship name="customer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Customer" inverseName="orders" inverseEntity="Customer" syncable="YES"/>
+        <relationship name="quotation" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Quotation" syncable="YES"/>
+    </entity>
+    <entity name="Quotation" representedClassName="Quotation" syncable="YES">
+        <attribute name="distance" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="livingArea" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="piano" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="price" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="storageArea" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="customer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Customer" inverseName="quotations" inverseEntity="Customer" syncable="YES"/>
+        <relationship name="fromAddress" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Address" syncable="YES"/>
+        <relationship name="toAddress" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Address" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Address" positionX="-63" positionY="27" width="128" height="120"/>
+        <element name="Customer" positionX="-45" positionY="54" width="128" height="120"/>
+        <element name="Order" positionX="-54" positionY="54" width="128" height="75"/>
+        <element name="Quotation" positionX="-63" positionY="-18" width="128" height="165"/>
+    </elements>
+</model>

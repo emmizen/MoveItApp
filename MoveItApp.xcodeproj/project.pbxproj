@@ -7,14 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20F84D001AEEB366001242F7 /* DataHandlerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F84CFF1AEEB366001242F7 /* DataHandlerTests.m */; };
 		20FD30DB1AEE599100C1DB4C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FD30DA1AEE599100C1DB4C /* main.m */; };
 		20FD30DE1AEE599100C1DB4C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FD30DD1AEE599100C1DB4C /* AppDelegate.m */; };
-		20FD30E11AEE599100C1DB4C /* MoveItApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 20FD30DF1AEE599100C1DB4C /* MoveItApp.xcdatamodeld */; };
-		20FD30E41AEE599100C1DB4C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FD30E31AEE599100C1DB4C /* ViewController.m */; };
-		20FD30E71AEE599100C1DB4C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20FD30E51AEE599100C1DB4C /* Main.storyboard */; };
 		20FD30E91AEE599100C1DB4C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20FD30E81AEE599100C1DB4C /* Images.xcassets */; };
 		20FD30EC1AEE599100C1DB4C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20FD30EA1AEE599100C1DB4C /* LaunchScreen.xib */; };
 		20FD30F81AEE599100C1DB4C /* MoveItAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FD30F71AEE599100C1DB4C /* MoveItAppTests.m */; };
+		20FD31031AEE5A0E00C1DB4C /* DataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FD31021AEE5A0E00C1DB4C /* DataHandler.m */; };
+		20FD31061AEE5A4100C1DB4C /* MoveIt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 20FD31041AEE5A4100C1DB4C /* MoveIt.xcdatamodeld */; };
+		20FD31091AEE5ACF00C1DB4C /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FD31081AEE5ACF00C1DB4C /* Order.m */; };
+		20FD310C1AEE5ACF00C1DB4C /* Quotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FD310B1AEE5ACF00C1DB4C /* Quotation.m */; };
+		20FD310F1AEE5ACF00C1DB4C /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FD310E1AEE5ACF00C1DB4C /* Address.m */; };
+		20FD31121AEE5ACF00C1DB4C /* Customer.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FD31111AEE5ACF00C1DB4C /* Customer.m */; };
+		20FD31151AEE5B3E00C1DB4C /* A0SimpleKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FD31141AEE5B3E00C1DB4C /* A0SimpleKeychain.m */; };
+		20FD311B1AEE777500C1DB4C /* PriceCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FD311A1AEE777500C1DB4C /* PriceCalculator.m */; };
+		20FD311D1AEE77A000C1DB4C /* PriceCalculatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FD311C1AEE77A000C1DB4C /* PriceCalculatorTests.m */; };
+		20FD31281AEE78C000C1DB4C /* CreateQuotationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FD311F1AEE78C000C1DB4C /* CreateQuotationViewController.m */; };
+		20FD31291AEE78C000C1DB4C /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FD31211AEE78C000C1DB4C /* LogInViewController.m */; };
+		20FD312A1AEE78C000C1DB4C /* OrdersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FD31231AEE78C000C1DB4C /* OrdersTableViewController.m */; };
+		20FD312C1AEE78C000C1DB4C /* QuotationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FD31271AEE78C000C1DB4C /* QuotationViewController.m */; };
+		20FD312E1AEE78EA00C1DB4C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20FD312D1AEE78EA00C1DB4C /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,20 +40,42 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		20F84CFF1AEEB366001242F7 /* DataHandlerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataHandlerTests.m; sourceTree = "<group>"; };
 		20FD30D51AEE599100C1DB4C /* MoveItApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoveItApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20FD30D91AEE599100C1DB4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20FD30DA1AEE599100C1DB4C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		20FD30DC1AEE599100C1DB4C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		20FD30DD1AEE599100C1DB4C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		20FD30E01AEE599100C1DB4C /* MoveItApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MoveItApp.xcdatamodel; sourceTree = "<group>"; };
-		20FD30E21AEE599100C1DB4C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		20FD30E31AEE599100C1DB4C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		20FD30E61AEE599100C1DB4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		20FD30E81AEE599100C1DB4C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		20FD30EB1AEE599100C1DB4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		20FD30F11AEE599100C1DB4C /* MoveItAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoveItAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		20FD30F61AEE599100C1DB4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20FD30F71AEE599100C1DB4C /* MoveItAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoveItAppTests.m; sourceTree = "<group>"; };
+		20FD31011AEE5A0E00C1DB4C /* DataHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataHandler.h; sourceTree = "<group>"; };
+		20FD31021AEE5A0E00C1DB4C /* DataHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataHandler.m; sourceTree = "<group>"; };
+		20FD31051AEE5A4100C1DB4C /* MoveIt.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MoveIt.xcdatamodel; sourceTree = "<group>"; };
+		20FD31071AEE5ACF00C1DB4C /* Order.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Order.h; sourceTree = "<group>"; };
+		20FD31081AEE5ACF00C1DB4C /* Order.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Order.m; sourceTree = "<group>"; };
+		20FD310A1AEE5ACF00C1DB4C /* Quotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Quotation.h; sourceTree = "<group>"; };
+		20FD310B1AEE5ACF00C1DB4C /* Quotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Quotation.m; sourceTree = "<group>"; };
+		20FD310D1AEE5ACF00C1DB4C /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Address.h; sourceTree = "<group>"; };
+		20FD310E1AEE5ACF00C1DB4C /* Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Address.m; sourceTree = "<group>"; };
+		20FD31101AEE5ACF00C1DB4C /* Customer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Customer.h; sourceTree = "<group>"; };
+		20FD31111AEE5ACF00C1DB4C /* Customer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Customer.m; sourceTree = "<group>"; };
+		20FD31131AEE5B3E00C1DB4C /* A0SimpleKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A0SimpleKeychain.h; sourceTree = "<group>"; };
+		20FD31141AEE5B3E00C1DB4C /* A0SimpleKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A0SimpleKeychain.m; sourceTree = "<group>"; };
+		20FD31191AEE777500C1DB4C /* PriceCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PriceCalculator.h; sourceTree = "<group>"; };
+		20FD311A1AEE777500C1DB4C /* PriceCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PriceCalculator.m; sourceTree = "<group>"; };
+		20FD311C1AEE77A000C1DB4C /* PriceCalculatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PriceCalculatorTests.m; sourceTree = "<group>"; };
+		20FD311E1AEE78C000C1DB4C /* CreateQuotationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateQuotationViewController.h; sourceTree = "<group>"; };
+		20FD311F1AEE78C000C1DB4C /* CreateQuotationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateQuotationViewController.m; sourceTree = "<group>"; };
+		20FD31201AEE78C000C1DB4C /* LogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogInViewController.h; sourceTree = "<group>"; };
+		20FD31211AEE78C000C1DB4C /* LogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInViewController.m; sourceTree = "<group>"; };
+		20FD31221AEE78C000C1DB4C /* OrdersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersTableViewController.h; sourceTree = "<group>"; };
+		20FD31231AEE78C000C1DB4C /* OrdersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersTableViewController.m; sourceTree = "<group>"; };
+		20FD31261AEE78C000C1DB4C /* QuotationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuotationViewController.h; sourceTree = "<group>"; };
+		20FD31271AEE78C000C1DB4C /* QuotationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuotationViewController.m; sourceTree = "<group>"; };
+		20FD312D1AEE78EA00C1DB4C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,14 +117,27 @@
 		20FD30D71AEE599100C1DB4C /* MoveItApp */ = {
 			isa = PBXGroup;
 			children = (
+				20FD31161AEE763C00C1DB4C /* DataObjects */,
+				20FD31131AEE5B3E00C1DB4C /* A0SimpleKeychain.h */,
+				20FD31141AEE5B3E00C1DB4C /* A0SimpleKeychain.m */,
 				20FD30DC1AEE599100C1DB4C /* AppDelegate.h */,
 				20FD30DD1AEE599100C1DB4C /* AppDelegate.m */,
-				20FD30E21AEE599100C1DB4C /* ViewController.h */,
-				20FD30E31AEE599100C1DB4C /* ViewController.m */,
-				20FD30E51AEE599100C1DB4C /* Main.storyboard */,
+				20FD311E1AEE78C000C1DB4C /* CreateQuotationViewController.h */,
+				20FD311F1AEE78C000C1DB4C /* CreateQuotationViewController.m */,
+				20FD31201AEE78C000C1DB4C /* LogInViewController.h */,
+				20FD31211AEE78C000C1DB4C /* LogInViewController.m */,
+				20FD31221AEE78C000C1DB4C /* OrdersTableViewController.h */,
+				20FD31231AEE78C000C1DB4C /* OrdersTableViewController.m */,
+				20FD31261AEE78C000C1DB4C /* QuotationViewController.h */,
+				20FD31271AEE78C000C1DB4C /* QuotationViewController.m */,
+				20FD31011AEE5A0E00C1DB4C /* DataHandler.h */,
+				20FD31021AEE5A0E00C1DB4C /* DataHandler.m */,
+				20FD31191AEE777500C1DB4C /* PriceCalculator.h */,
+				20FD311A1AEE777500C1DB4C /* PriceCalculator.m */,
 				20FD30E81AEE599100C1DB4C /* Images.xcassets */,
 				20FD30EA1AEE599100C1DB4C /* LaunchScreen.xib */,
-				20FD30DF1AEE599100C1DB4C /* MoveItApp.xcdatamodeld */,
+				20FD312D1AEE78EA00C1DB4C /* Main.storyboard */,
+				20FD31041AEE5A4100C1DB4C /* MoveIt.xcdatamodeld */,
 				20FD30D81AEE599100C1DB4C /* Supporting Files */,
 			);
 			path = MoveItApp;
@@ -108,7 +155,9 @@
 		20FD30F41AEE599100C1DB4C /* MoveItAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				20FD311C1AEE77A000C1DB4C /* PriceCalculatorTests.m */,
 				20FD30F71AEE599100C1DB4C /* MoveItAppTests.m */,
+				20F84CFF1AEEB366001242F7 /* DataHandlerTests.m */,
 				20FD30F51AEE599100C1DB4C /* Supporting Files */,
 			);
 			path = MoveItAppTests;
@@ -120,6 +169,21 @@
 				20FD30F61AEE599100C1DB4C /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		20FD31161AEE763C00C1DB4C /* DataObjects */ = {
+			isa = PBXGroup;
+			children = (
+				20FD31101AEE5ACF00C1DB4C /* Customer.h */,
+				20FD31111AEE5ACF00C1DB4C /* Customer.m */,
+				20FD310D1AEE5ACF00C1DB4C /* Address.h */,
+				20FD310E1AEE5ACF00C1DB4C /* Address.m */,
+				20FD310A1AEE5ACF00C1DB4C /* Quotation.h */,
+				20FD310B1AEE5ACF00C1DB4C /* Quotation.m */,
+				20FD31071AEE5ACF00C1DB4C /* Order.h */,
+				20FD31081AEE5ACF00C1DB4C /* Order.m */,
+			);
+			name = DataObjects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,7 +266,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20FD30E71AEE599100C1DB4C /* Main.storyboard in Resources */,
+				20FD312E1AEE78EA00C1DB4C /* Main.storyboard in Resources */,
 				20FD30EC1AEE599100C1DB4C /* LaunchScreen.xib in Resources */,
 				20FD30E91AEE599100C1DB4C /* Images.xcassets in Resources */,
 			);
@@ -222,10 +286,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20FD312A1AEE78C000C1DB4C /* OrdersTableViewController.m in Sources */,
+				20FD31091AEE5ACF00C1DB4C /* Order.m in Sources */,
+				20FD31121AEE5ACF00C1DB4C /* Customer.m in Sources */,
+				20FD31031AEE5A0E00C1DB4C /* DataHandler.m in Sources */,
+				20FD311B1AEE777500C1DB4C /* PriceCalculator.m in Sources */,
+				20FD312C1AEE78C000C1DB4C /* QuotationViewController.m in Sources */,
+				20FD310F1AEE5ACF00C1DB4C /* Address.m in Sources */,
 				20FD30DE1AEE599100C1DB4C /* AppDelegate.m in Sources */,
 				20FD30DB1AEE599100C1DB4C /* main.m in Sources */,
-				20FD30E41AEE599100C1DB4C /* ViewController.m in Sources */,
-				20FD30E11AEE599100C1DB4C /* MoveItApp.xcdatamodeld in Sources */,
+				20FD31151AEE5B3E00C1DB4C /* A0SimpleKeychain.m in Sources */,
+				20FD31291AEE78C000C1DB4C /* LogInViewController.m in Sources */,
+				20FD31281AEE78C000C1DB4C /* CreateQuotationViewController.m in Sources */,
+				20FD310C1AEE5ACF00C1DB4C /* Quotation.m in Sources */,
+				20FD31061AEE5A4100C1DB4C /* MoveIt.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,7 +307,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20F84D001AEEB366001242F7 /* DataHandlerTests.m in Sources */,
 				20FD30F81AEE599100C1DB4C /* MoveItAppTests.m in Sources */,
+				20FD311D1AEE77A000C1DB4C /* PriceCalculatorTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,14 +324,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		20FD30E51AEE599100C1DB4C /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				20FD30E61AEE599100C1DB4C /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		20FD30EA1AEE599100C1DB4C /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -420,6 +488,7 @@
 				20FD30FD1AEE599100C1DB4C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		20FD30FE1AEE599100C1DB4C /* Build configuration list for PBXNativeTarget "MoveItAppTests" */ = {
 			isa = XCConfigurationList;
@@ -428,17 +497,18 @@
 				20FD31001AEE599100C1DB4C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		20FD30DF1AEE599100C1DB4C /* MoveItApp.xcdatamodeld */ = {
+		20FD31041AEE5A4100C1DB4C /* MoveIt.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				20FD30E01AEE599100C1DB4C /* MoveItApp.xcdatamodel */,
+				20FD31051AEE5A4100C1DB4C /* MoveIt.xcdatamodel */,
 			);
-			currentVersion = 20FD30E01AEE599100C1DB4C /* MoveItApp.xcdatamodel */;
-			path = MoveItApp.xcdatamodeld;
+			currentVersion = 20FD31051AEE5A4100C1DB4C /* MoveIt.xcdatamodel */;
+			path = MoveIt.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
