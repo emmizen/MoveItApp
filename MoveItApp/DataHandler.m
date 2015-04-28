@@ -32,17 +32,6 @@
 -(void)test
 {
     NSLog(@"app dir: %@",[[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject]);
- 
-    NSLog(@"**%@", [[A0SimpleKeychain keychain] stringForKey:@"password"]);
-   // NSLog(@"%d", [self checkIfCustomerExists:@"testmail@me.se"]);
- // [self createCustomerWithEmail:@"testmail@me.se" password:@"pass" name:@"Kurre" phoneNumber:@"070553355"];
-    //[self logOut];
-    
-//    Order *q = [self createOrderWithQuotation:[[[[self currentCustomer] quotations] allObjects] objectAtIndex:0]];
-//    [[self currentCustomer] addOrdersObject:q];
-//    [self saveManagedContext:self.context];
-
-    //NSLog(@"%@", [(Quotation*)[[[[self currentCustomer] quotations] allObjects] objectAtIndex:0] customer]);
 }
 
 -(BOOL)isAuthenlicated
@@ -54,15 +43,15 @@
     }
 }
 
--(Customer *)currentCustomer
+-(User *)currentUser
 {
-    Customer *customer;
+    User *user;
     NSString *email = [[A0SimpleKeychain keychain] stringForKey:@"email"];
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Customer"];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"User"];
     request.predicate = [NSPredicate predicateWithFormat:@"eMail == %@" , email];
     NSArray *result = [self.context executeFetchRequest:request error:Nil];
-    customer = [result firstObject];
-    return customer;
+    user = [result firstObject];
+    return user;
 }
 
 #pragma mark - Create CoreData objects
@@ -93,26 +82,26 @@
     return address;
 }
 
--(BOOL)checkIfCustomerExists:(NSString*)mail
+-(BOOL)checkIfUserExists:(NSString*)mail
 {
-    Customer *customer;
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Customer"];
+    User *user;
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"User"];
     request.predicate = [NSPredicate predicateWithFormat:@"eMail == %@" , mail];
     NSArray *result = [self.context executeFetchRequest:request error:Nil];
-    customer = [result firstObject];
-    return customer ? YES : NO;
+    user = [result firstObject];
+    return user ? YES : NO;
 }
 
--(void)createCustomerWithEmail:(NSString *)email password:(NSString *)password name:(NSString *)name phoneNumber:(NSString *)phoneNumber
+-(void)createUserWithEmail:(NSString *)email password:(NSString *)password name:(NSString *)name phoneNumber:(NSString *)phoneNumber
 {
     [[A0SimpleKeychain keychain] setString:password forKey:@"password"];
     [[A0SimpleKeychain keychain] setString:email forKey:@"email"];
     
-    if (![self checkIfCustomerExists:email]) {
-        Customer *customer = [NSEntityDescription insertNewObjectForEntityForName:@"Customer" inManagedObjectContext:self.context];
-        customer.eMail = email;
-        customer.name = name;
-        customer.phoneNumber = phoneNumber;
+    if (![self checkIfUserExists:email]) {
+        User *user = [NSEntityDescription insertNewObjectForEntityForName:@"User" inManagedObjectContext:self.context];
+        user.eMail = email;
+        user.name = name;
+        user.phoneNumber = phoneNumber;
         [self saveManagedContext:self.context];
     }
     [self.authenticationDelegate notifyDelegateAuthenticationSuccessful:YES];
@@ -120,7 +109,7 @@
 
 -(void)logInUserWithEmail:(NSString*)email andPassword:(NSString*)password
 {
-    if ([self checkIfCustomerExists:email]) {
+    if ([self checkIfUserExists:email]) {
         [[A0SimpleKeychain keychain] setString:password forKey:@"password"];
         [[A0SimpleKeychain keychain] setString:email forKey:@"email"];
         [self.authenticationDelegate notifyDelegateAuthenticationSuccessful:YES];
@@ -139,31 +128,31 @@
 
 -(void)saveQuotation:(Quotation *)quotation
 {
-    Customer *customer = [self currentCustomer];
-    [customer addQuotationsObject:quotation];
-    quotation.customer = customer;
+    User *user = [self currentUser];
+    [user addQuotationsObject:quotation];
+    quotation.user = user;
     [self saveManagedContext:self.context];
 }
 
 -(void)createOrderWithQuotation:(Quotation *)quotation
 {
-    Customer *customer = [self currentCustomer];
+    User *user = [self currentUser];
     Order *order = [NSEntityDescription insertNewObjectForEntityForName:@"Order" inManagedObjectContext:self.context];
     order.quotation = quotation;
-    order.customer = customer;
+    order.user = user;
     
-    [customer addOrdersObject:order];
+    [user addOrdersObject:order];
     [self saveManagedContext:self.context];
 }
 
--(NSArray *)savedObjectsForCurrentCustomer
+-(NSArray *)savedObjectsForCurrentUser
 {
     NSMutableArray *objects = [NSMutableArray new];
-    if ([[self currentCustomer] quotations]) {
-        [objects addObjectsFromArray:[[[self currentCustomer] quotations] allObjects]];
+    if ([[self currentUser] quotations]) {
+        [objects addObjectsFromArray:[[[self currentUser] quotations] allObjects]];
     }
-    if ([[self currentCustomer] orders]) {
-        [objects addObjectsFromArray:[[[self currentCustomer] orders] allObjects]];
+    if ([[self currentUser] orders]) {
+        [objects addObjectsFromArray:[[[self currentUser] orders] allObjects]];
     }
     return [NSArray arrayWithArray:objects];
 }

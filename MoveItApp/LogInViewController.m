@@ -17,7 +17,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumberTextField;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
-
 @property (weak, nonatomic) IBOutlet UIButton *toggleButton;
 @property (weak, nonatomic) IBOutlet UIButton *button;
 @property (nonatomic) BOOL isLogin;
@@ -29,18 +28,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.isLogin = YES;
-    // Do any additional setup after loading the view.
 }
+
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     [self.button setTitle: @"Logga in" forState: UIControlStateNormal];
     [self.toggleButton setTitle:@"Jag är ny användare" forState:UIControlStateNormal];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)toggleCreateUserAndLogin:(id)sender
@@ -63,7 +57,7 @@
     if (self.isLogin) {
         [[DataHandler sharedDatahandler] logInUserWithEmail:self.emailTextField.text andPassword:self.passwordTextField.text];
     }else {
-        [[DataHandler sharedDatahandler] createCustomerWithEmail:self.emailTextField.text password:self.passwordTextField.text name:self.nameTextField.text phoneNumber:self.phoneNumberTextField.text];
+        [[DataHandler sharedDatahandler] createUserWithEmail:self.emailTextField.text password:self.passwordTextField.text name:self.nameTextField.text phoneNumber:self.phoneNumberTextField.text];
     }
 }
 
@@ -75,7 +69,7 @@
 
 -(void)notifyDelegateAuthenticationSuccessful:(BOOL)isAuthenticated
 {
-    NSLog(@"Auth %d", isAuthenticated);
+    NSLog(@"Authenticated: %d", isAuthenticated);
     if (isAuthenticated) {
         [self.sourceViewController performSelector:@selector(authenticatedUserToSavedObjects)];
         [self dismissViewControllerAnimated:YES completion:^{

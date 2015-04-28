@@ -42,7 +42,7 @@ buttonState;
     _toAddressField.text = [NSString stringWithFormat:@"Till %@, %@ %@", self.quotation.toAddress.streetAddress, self.quotation.toAddress.postalCode, self.quotation.toAddress.city];
     _distanceField.text = [NSString stringWithFormat:@"Vi beräknar att körsträckan är %@km", self.quotation.distance];
     _areasField.text = [NSString stringWithFormat:@"Din boende yta %@kvm + förvaring %@kvm", self.quotation.livingArea , self.quotation.storageArea];
-    _pianoField.text = self.quotation.piano ? @"Pianoflytt inkluderad" : @"Ej pianoflytt";
+    _pianoField.text = [self.quotation.piano boolValue] ? @"Pianoflytt inkluderad" : @"Ej pianoflytt";
     _priceLabel.text = [NSString stringWithFormat:@"%@ kr", [self.quotation.price stringValue]];
 }
 

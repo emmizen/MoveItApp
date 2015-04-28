@@ -65,8 +65,7 @@ typedef void (^MyBlock)(CLPlacemark *completionPlacemark);
     }
 }
 
-
-- (IBAction)fromButtom:(id)sender
+- (IBAction)fromButton:(id)sender
 {
     NSString *address = [NSString stringWithFormat:@"%@, sverige", self.fromAddressField.text];
     [self searchForAddress:address block:^(CLPlacemark *completionPlacemark) {
@@ -76,7 +75,6 @@ typedef void (^MyBlock)(CLPlacemark *completionPlacemark);
         if (!completionPlacemark.thoroughfare || !completionPlacemark.subThoroughfare) {
             text = [NSString stringWithFormat:@"%@ \n%@ %@", completionPlacemark.name, completionPlacemark.postalCode, completionPlacemark.locality];
             street = completionPlacemark.name;
-            
         } else {
             text = [NSString stringWithFormat:@"%@ %@ \n%@ %@", completionPlacemark.thoroughfare, completionPlacemark.subThoroughfare, completionPlacemark.postalCode, completionPlacemark.locality];
             street = [NSString stringWithFormat:@"%@ %@", completionPlacemark.thoroughfare, completionPlacemark.subThoroughfare];
@@ -87,7 +85,6 @@ typedef void (^MyBlock)(CLPlacemark *completionPlacemark);
         self.fromAddressView.hidden = NO;
         self.fromAddressLabel.text = text;
     }];
-    
 }
 
 - (IBAction)toButton:(id)sender

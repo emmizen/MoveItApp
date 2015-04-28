@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		20F84D001AEEB366001242F7 /* DataHandlerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F84CFF1AEEB366001242F7 /* DataHandlerTests.m */; };
+		20F84D031AEFB871001242F7 /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F84D021AEFB871001242F7 /* Address.m */; };
+		20F84D061AEFB872001242F7 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F84D051AEFB872001242F7 /* Order.m */; };
+		20F84D091AEFB872001242F7 /* Quotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F84D081AEFB872001242F7 /* Quotation.m */; };
+		20F84D0C1AEFB872001242F7 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F84D0B1AEFB872001242F7 /* User.m */; };
 		20FD30DB1AEE599100C1DB4C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FD30DA1AEE599100C1DB4C /* main.m */; };
 		20FD30DE1AEE599100C1DB4C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FD30DD1AEE599100C1DB4C /* AppDelegate.m */; };
 		20FD30E91AEE599100C1DB4C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20FD30E81AEE599100C1DB4C /* Images.xcassets */; };
@@ -15,10 +19,6 @@
 		20FD30F81AEE599100C1DB4C /* MoveItAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FD30F71AEE599100C1DB4C /* MoveItAppTests.m */; };
 		20FD31031AEE5A0E00C1DB4C /* DataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FD31021AEE5A0E00C1DB4C /* DataHandler.m */; };
 		20FD31061AEE5A4100C1DB4C /* MoveIt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 20FD31041AEE5A4100C1DB4C /* MoveIt.xcdatamodeld */; };
-		20FD31091AEE5ACF00C1DB4C /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FD31081AEE5ACF00C1DB4C /* Order.m */; };
-		20FD310C1AEE5ACF00C1DB4C /* Quotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FD310B1AEE5ACF00C1DB4C /* Quotation.m */; };
-		20FD310F1AEE5ACF00C1DB4C /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FD310E1AEE5ACF00C1DB4C /* Address.m */; };
-		20FD31121AEE5ACF00C1DB4C /* Customer.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FD31111AEE5ACF00C1DB4C /* Customer.m */; };
 		20FD31151AEE5B3E00C1DB4C /* A0SimpleKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FD31141AEE5B3E00C1DB4C /* A0SimpleKeychain.m */; };
 		20FD311B1AEE777500C1DB4C /* PriceCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FD311A1AEE777500C1DB4C /* PriceCalculator.m */; };
 		20FD311D1AEE77A000C1DB4C /* PriceCalculatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FD311C1AEE77A000C1DB4C /* PriceCalculatorTests.m */; };
@@ -41,6 +41,14 @@
 
 /* Begin PBXFileReference section */
 		20F84CFF1AEEB366001242F7 /* DataHandlerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataHandlerTests.m; sourceTree = "<group>"; };
+		20F84D011AEFB871001242F7 /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Address.h; sourceTree = "<group>"; };
+		20F84D021AEFB871001242F7 /* Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Address.m; sourceTree = "<group>"; };
+		20F84D041AEFB872001242F7 /* Order.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Order.h; sourceTree = "<group>"; };
+		20F84D051AEFB872001242F7 /* Order.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Order.m; sourceTree = "<group>"; };
+		20F84D071AEFB872001242F7 /* Quotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Quotation.h; sourceTree = "<group>"; };
+		20F84D081AEFB872001242F7 /* Quotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Quotation.m; sourceTree = "<group>"; };
+		20F84D0A1AEFB872001242F7 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		20F84D0B1AEFB872001242F7 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		20FD30D51AEE599100C1DB4C /* MoveItApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoveItApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20FD30D91AEE599100C1DB4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20FD30DA1AEE599100C1DB4C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -54,14 +62,6 @@
 		20FD31011AEE5A0E00C1DB4C /* DataHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataHandler.h; sourceTree = "<group>"; };
 		20FD31021AEE5A0E00C1DB4C /* DataHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataHandler.m; sourceTree = "<group>"; };
 		20FD31051AEE5A4100C1DB4C /* MoveIt.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MoveIt.xcdatamodel; sourceTree = "<group>"; };
-		20FD31071AEE5ACF00C1DB4C /* Order.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Order.h; sourceTree = "<group>"; };
-		20FD31081AEE5ACF00C1DB4C /* Order.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Order.m; sourceTree = "<group>"; };
-		20FD310A1AEE5ACF00C1DB4C /* Quotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Quotation.h; sourceTree = "<group>"; };
-		20FD310B1AEE5ACF00C1DB4C /* Quotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Quotation.m; sourceTree = "<group>"; };
-		20FD310D1AEE5ACF00C1DB4C /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Address.h; sourceTree = "<group>"; };
-		20FD310E1AEE5ACF00C1DB4C /* Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Address.m; sourceTree = "<group>"; };
-		20FD31101AEE5ACF00C1DB4C /* Customer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Customer.h; sourceTree = "<group>"; };
-		20FD31111AEE5ACF00C1DB4C /* Customer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Customer.m; sourceTree = "<group>"; };
 		20FD31131AEE5B3E00C1DB4C /* A0SimpleKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A0SimpleKeychain.h; sourceTree = "<group>"; };
 		20FD31141AEE5B3E00C1DB4C /* A0SimpleKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A0SimpleKeychain.m; sourceTree = "<group>"; };
 		20FD31191AEE777500C1DB4C /* PriceCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PriceCalculator.h; sourceTree = "<group>"; };
@@ -174,14 +174,14 @@
 		20FD31161AEE763C00C1DB4C /* DataObjects */ = {
 			isa = PBXGroup;
 			children = (
-				20FD31101AEE5ACF00C1DB4C /* Customer.h */,
-				20FD31111AEE5ACF00C1DB4C /* Customer.m */,
-				20FD310D1AEE5ACF00C1DB4C /* Address.h */,
-				20FD310E1AEE5ACF00C1DB4C /* Address.m */,
-				20FD310A1AEE5ACF00C1DB4C /* Quotation.h */,
-				20FD310B1AEE5ACF00C1DB4C /* Quotation.m */,
-				20FD31071AEE5ACF00C1DB4C /* Order.h */,
-				20FD31081AEE5ACF00C1DB4C /* Order.m */,
+				20F84D0A1AEFB872001242F7 /* User.h */,
+				20F84D0B1AEFB872001242F7 /* User.m */,
+				20F84D071AEFB872001242F7 /* Quotation.h */,
+				20F84D081AEFB872001242F7 /* Quotation.m */,
+				20F84D041AEFB872001242F7 /* Order.h */,
+				20F84D051AEFB872001242F7 /* Order.m */,
+				20F84D011AEFB871001242F7 /* Address.h */,
+				20F84D021AEFB871001242F7 /* Address.m */,
 			);
 			name = DataObjects;
 			sourceTree = "<group>";
@@ -287,18 +287,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				20FD312A1AEE78C000C1DB4C /* OrdersTableViewController.m in Sources */,
-				20FD31091AEE5ACF00C1DB4C /* Order.m in Sources */,
-				20FD31121AEE5ACF00C1DB4C /* Customer.m in Sources */,
 				20FD31031AEE5A0E00C1DB4C /* DataHandler.m in Sources */,
+				20F84D031AEFB871001242F7 /* Address.m in Sources */,
+				20F84D091AEFB872001242F7 /* Quotation.m in Sources */,
+				20F84D0C1AEFB872001242F7 /* User.m in Sources */,
+				20F84D061AEFB872001242F7 /* Order.m in Sources */,
 				20FD311B1AEE777500C1DB4C /* PriceCalculator.m in Sources */,
 				20FD312C1AEE78C000C1DB4C /* QuotationViewController.m in Sources */,
-				20FD310F1AEE5ACF00C1DB4C /* Address.m in Sources */,
 				20FD30DE1AEE599100C1DB4C /* AppDelegate.m in Sources */,
 				20FD30DB1AEE599100C1DB4C /* main.m in Sources */,
 				20FD31151AEE5B3E00C1DB4C /* A0SimpleKeychain.m in Sources */,
 				20FD31291AEE78C000C1DB4C /* LogInViewController.m in Sources */,
 				20FD31281AEE78C000C1DB4C /* CreateQuotationViewController.m in Sources */,
-				20FD310C1AEE5ACF00C1DB4C /* Quotation.m in Sources */,
 				20FD31061AEE5A4100C1DB4C /* MoveIt.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -43,9 +43,9 @@
 
 -(void)testUnAuthorizedUserSaveQuotation
 {
-    [[DataHandler sharedDatahandler] createCustomerWithEmail:@"test@test" password:@"test" name:@"test" phoneNumber:@"9999"];
+    [[DataHandler sharedDatahandler] createUserWithEmail:@"test@test" password:@"test" name:@"test" phoneNumber:@"9999"];
     [[DataHandler sharedDatahandler] saveQuotation:self.quotation];
-    NSArray *array = [[DataHandler sharedDatahandler] savedObjectsForCurrentCustomer];
+    NSArray *array = [[DataHandler sharedDatahandler] savedObjectsForCurrentUser];
     XCTAssertTrue([array containsObject:self.quotation], @"Quotation should be saved");
 }
 

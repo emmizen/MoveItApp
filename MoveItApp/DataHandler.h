@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 #import "Address.h"
-#import "Customer.h"
+#import "User.h"
 #import "Quotation.h"
 #import "Order.h"
 #import "A0SimpleKeychain.h"
@@ -28,7 +28,7 @@
 
 +(DataHandler*)sharedDatahandler;
 -(BOOL)isAuthenlicated;
--(Customer*)currentCustomer;
+-(User*)currentUser;
 
 -(Address*)createAddressWithStreet:(NSString*)street postalCode:(NSString*)postalCode city:(NSString*)city longitude:(float)longitude andLatitude:(float)latitude;
 
@@ -36,9 +36,9 @@
 
 -(void)createOrderWithQuotation:(Quotation*)quotation;
 -(void)saveQuotation:(Quotation*)quotation;
--(NSArray*)savedObjectsForCurrentCustomer;
+-(NSArray*)savedObjectsForCurrentUser;
 
--(void)createCustomerWithEmail:(NSString *)email password:(NSString *)password name:(NSString *)name phoneNumber:(NSString *)phoneNumber;
+-(void)createUserWithEmail:(NSString *)email password:(NSString *)password name:(NSString *)name phoneNumber:(NSString *)phoneNumber;
 -(void)logInUserWithEmail:(NSString*)email andPassword:(NSString*)password;
 -(void)logOut;
 
