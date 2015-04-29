@@ -21,6 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateFromDataHandler) name:@"update" object:nil];
     mySaved = [[DataHandler sharedDatahandler] savedObjectsForCurrentUser];
     self.navigationController.navigationBar.hidden = NO;
     self.navigationItem.hidesBackButton = YES;
@@ -28,6 +29,11 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStylePlain target:self action:@selector(logoutButtonTapped:)];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addButtonTapped:)];
+}
+
+-(void)updateFromDataHandler
+{
+    mySaved = [[DataHandler sharedDatahandler] savedObjectsForCurrentUser];
 }
 
 -(void)addButtonTapped:(id)sender
