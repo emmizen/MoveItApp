@@ -305,12 +305,40 @@
     [PFUser logOut];
 }
 
+-(PFObject*)addressAsParseObject:(Address*)address
+{
+    PFObject *object = [PFObject objectWithClassName:@"Address"];
+    object[@"streetAddress"] = address.streetAddress;
+    object[@"postalCode"] = address.postalCode;
+    object[@"city"] = address.city;
+    object[@"longitude"] = address.longitude;
+    object[@"latitude"] = address.latitude;
+    return object;
+}
+
 -(void)saveQuotation:(Quotation *)quotation
 {
     User *user = [self currentUser];
     [user addQuotationsObject:quotation];
     quotation.user = user;
     [self saveManagedContext:self.context];
+    
+    PFObject *object = [PFObject objectWithClassName:@"Quotation"];
+    object[@"price"] = quotation.price;
+    object[@"livingArea"] = quotation.livingArea;
+    object[@"storageArea"] = quotation.storageArea;
+    object[@"distance"] = quotation.distance;
+    object[@"piano"] = quotation.piano;
+    object[@"fromAddress"] = [self addressAsParseObject:quotation.fromAddress];
+    object[@"toAddress"] = [self addressAsParseObject:quotation.toAddress];
+    object[@"user"] = [PFUser currentUser];
+    [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            NSLog(@"Saved Quotation to parse");
+        } else {
+            NSLog(@"Error saving Quotation to parse: %@", error);
+        }
+    }];
 }
 
 -(void)createOrderWithQuotation:(Quotation *)quotation

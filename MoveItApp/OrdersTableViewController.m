@@ -34,6 +34,7 @@
 -(void)updateFromDataHandler
 {
     mySaved = [[DataHandler sharedDatahandler] savedObjectsForCurrentUser];
+    [self.tableView reloadData];
 }
 
 -(void)addButtonTapped:(id)sender
