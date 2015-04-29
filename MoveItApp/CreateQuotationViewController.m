@@ -49,6 +49,7 @@ typedef void (^MyBlock)(CLPlacemark *completionPlacemark);
     self.navigationItem.hidesBackButton = YES;
     
     distanceInKilometers = 0;
+    [[DataHandler sharedDatahandler] test];
 }
 
 -(void)authenticatedUserToSavedObjects

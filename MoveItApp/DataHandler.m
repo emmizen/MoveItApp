@@ -8,6 +8,7 @@
 
 #import "DataHandler.h"
 #import "A0SimpleKeychain.h"
+#import <Parse/Parse.h>
 
 @interface DataHandler()
 
@@ -89,6 +90,14 @@
     request.predicate = [NSPredicate predicateWithFormat:@"eMail == %@" , mail];
     NSArray *result = [self.context executeFetchRequest:request error:Nil];
     user = [result firstObject];
+    if (!user) {
+        PFQuery *query = [PFQuery queryWithClassName:@"_User"];
+        
+        [query whereKey:@"username" equalTo:mail];
+        NSArray *arr = [query findObjects];
+        PFObject *parseUser = [arr firstObject];
+        return parseUser ? YES : NO;
+    }
     return user ? YES : NO;
 }
 
