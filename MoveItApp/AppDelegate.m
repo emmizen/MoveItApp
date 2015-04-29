@@ -7,9 +7,9 @@
 //
 
 #import "AppDelegate.h"
-#import "DataHandler.h"
 #import "A0SimpleKeychain.h"
 #import "DataHandler.h"
+#import <Parse/Parse.h>
 
 @interface AppDelegate ()
 
@@ -20,6 +20,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
+    [Parse setApplicationId:@"t1wYmUA9wOfzsQdOAJZRi15BEMSDbCflGuM7injA"
+        clientKey:@"vIY1ZSZ3tIETU1zkSiXiSyCLbo5WnOLkNAnX26qL"];
     
     UIViewController *viewController = [self viewControllerForAuthenticatedOrNot];
     
