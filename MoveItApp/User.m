@@ -19,4 +19,9 @@
 @dynamic orders;
 @dynamic quotations;
 
+-(NSString *)description
+{
+    return [NSString stringWithFormat:@"User with email: %@", self.eMail];
+}
+
 @end

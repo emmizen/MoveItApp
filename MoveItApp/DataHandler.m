@@ -45,6 +45,7 @@
 -(void)test
 {
     NSLog(@"app dir: %@",[[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject]);
+    //NSLog(@"curr %@", [self currentUser]);
 }
 
 -(BOOL)isAuthenlicated
@@ -95,22 +96,55 @@
     return address;
 }
 
-#pragma mark -
+#pragma mark - create user
 
 -(void)createUserWithEmail:(NSString *)email password:(NSString *)password name:(NSString *)name phoneNumber:(NSString *)phoneNumber
 {
-    [[A0SimpleKeychain keychain] setString:password forKey:@"password"];
-    [[A0SimpleKeychain keychain] setString:email forKey:@"email"];
-    
-    if (![self checkIfUserExists:email]) {
+    if (![self checkIfUserExists:email] && password && email) {
         User *user = [NSEntityDescription insertNewObjectForEntityForName:@"User" inManagedObjectContext:self.context];
         user.eMail = email;
         user.name = name;
         user.phoneNumber = phoneNumber;
-        [self saveManagedContext:self.context];
+        
+        PFUser *parseUser = [PFUser user];
+        parseUser.username = email;
+        parseUser.password = password;
+        parseUser[@"phoneNumber"] = phoneNumber;
+        parseUser[@"name"] = name;
+        
+        [parseUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (succeeded) {
+                
+                [[A0SimpleKeychain keychain] setString:password forKey:@"password"];
+                [[A0SimpleKeychain keychain] setString:email forKey:@"email"];
+                NSLog(@"Success sign up");
+                
+                [self saveManagedContext:self.context];
+                [self.authenticationDelegate notifyDelegateAuthenticationSuccessful:YES];
+            } else{
+                NSLog(@"Error sign in %@", error);
+                [self.authenticationDelegate notifyDelegateAuthenticationSuccessful:NO];
+            }
+        }];
+    } else {
+        [self logInUserWithEmail:email andPassword:password];
     }
-    [self.authenticationDelegate notifyDelegateAuthenticationSuccessful:YES];
 }
+
+//-(void)createUserWithEmail:(NSString *)email password:(NSString *)password name:(NSString *)name phoneNumber:(NSString *)phoneNumber
+//{
+//    [[A0SimpleKeychain keychain] setString:password forKey:@"password"];
+//    [[A0SimpleKeychain keychain] setString:email forKey:@"email"];
+//    
+//    if (![self checkIfUserExists:email]) {
+//        User *user = [NSEntityDescription insertNewObjectForEntityForName:@"User" inManagedObjectContext:self.context];
+//        user.eMail = email;
+//        user.name = name;
+//        user.phoneNumber = phoneNumber;
+//        [self saveManagedContext:self.context];
+//    }
+//    [self.authenticationDelegate notifyDelegateAuthenticationSuccessful:YES];
+//}
 
 #pragma mark - New login
 
