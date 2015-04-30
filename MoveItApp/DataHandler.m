@@ -42,61 +42,8 @@
     return self;
 }
 
--(void)test
-{
-    NSLog(@"app dir: %@",[[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject]);
-    //NSLog(@"ord %lu", [[[[self currentUser] quotations] allObjects] count]);
-}
 
--(BOOL)isAuthenlicated
-{
-    if ([[A0SimpleKeychain keychain] stringForKey:@"password"]) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
--(User *)currentUser
-{
-    User *user;
-    NSString *email = [[A0SimpleKeychain keychain] stringForKey:@"email"];
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"User"];
-    request.predicate = [NSPredicate predicateWithFormat:@"eMail == %@" , email];
-    NSArray *result = [self.context executeFetchRequest:request error:Nil];
-    user = [result firstObject];
-    return user;
-}
-
-#pragma mark - Create CoreData objects
-
--(Quotation *)createQuotationWithPrice:(int)price livingArea:(int)livingArea storageArea:(int)storageArea fromAddress:(Address *)from toAddress:(Address *)to distance:(double)distance piano:(BOOL)inclPiano
-{
-    Quotation *quotation = [NSEntityDescription insertNewObjectForEntityForName:@"Quotation" inManagedObjectContext:self.context];
-    quotation.price = [NSNumber numberWithInt:price];
-    quotation.livingArea = [NSNumber numberWithInt:livingArea];
-    quotation.storageArea = [NSNumber numberWithInt:storageArea];
-    quotation.fromAddress = from;
-    quotation.toAddress = to;
-    quotation.distance = [NSNumber numberWithDouble:distance];
-    quotation.piano = [NSNumber numberWithBool:inclPiano];
-    
-    return quotation;
-}
-
--(Address *)createAddressWithStreet:(NSString *)street postalCode:(NSString *)postalCode city:(NSString *)city longitude:(float)longitude andLatitude:(float)latitude
-{
-    Address *address = [NSEntityDescription insertNewObjectForEntityForName:@"Address" inManagedObjectContext:self.context];
-    address.streetAddress = street;
-    address.postalCode = postalCode;
-    address.city = city;
-    address.longitude = [NSNumber numberWithFloat:longitude];
-    address.latitude = [NSNumber numberWithFloat:latitude];
-
-    return address;
-}
-
-#pragma mark - create user
+#pragma mark - create user and Authenication methods
 
 -(void)createUserWithEmail:(NSString *)email password:(NSString *)password name:(NSString *)name phoneNumber:(NSString *)phoneNumber
 {
@@ -131,7 +78,145 @@
     }
 }
 
-#pragma mark - New login
+-(void)logInUserWithEmail:(NSString*)email andPassword:(NSString*)password
+{
+    if ([self checkIfUserExists:email] && password) {
+        [PFUser logInWithUsernameInBackground:email password:password block:^(PFUser *user, NSError *error) {
+            if (user) {
+                [[A0SimpleKeychain keychain] setString:password forKey:@"password"];
+                [[A0SimpleKeychain keychain] setString:email forKey:@"email"];
+                [self createUser:user];
+                [self fetchUsersData:user];
+                
+                [self.authenticationDelegate notifyDelegateAuthenticationSuccessful:YES];
+            } else {
+                NSLog(@"Error: %@", error);
+                [self.authenticationDelegate notifyDelegateAuthenticationSuccessful:NO];
+            }
+        }];
+    } else {
+        [self.authenticationDelegate notifyDelegateAuthenticationSuccessful:NO];
+    }
+}
+
+-(void)logOut
+{
+    if ([self currentUser]) {
+        [self.context deleteObject:[self currentUser]];
+    }
+    [[A0SimpleKeychain keychain] deleteEntryForKey:@"password"];
+    [[A0SimpleKeychain keychain] deleteEntryForKey:@"email" ];
+    [PFUser logOut];
+}
+
+#pragma mark - Create CoreData objects
+
+-(Address *)createAddressWithStreet:(NSString *)street postalCode:(NSString *)postalCode city:(NSString *)city longitude:(float)longitude andLatitude:(float)latitude
+{
+    Address *address = [NSEntityDescription insertNewObjectForEntityForName:@"Address" inManagedObjectContext:self.context];
+    address.streetAddress = street;
+    address.postalCode = postalCode;
+    address.city = city;
+    address.longitude = [NSNumber numberWithFloat:longitude];
+    address.latitude = [NSNumber numberWithFloat:latitude];
+
+    return address;
+}
+
+-(Quotation *)createQuotationWithPrice:(int)price livingArea:(int)livingArea storageArea:(int)storageArea fromAddress:(Address *)from toAddress:(Address *)to distance:(double)distance piano:(BOOL)inclPiano
+{
+    Quotation *quotation = [NSEntityDescription insertNewObjectForEntityForName:@"Quotation" inManagedObjectContext:self.context];
+    quotation.price = [NSNumber numberWithInt:price];
+    quotation.livingArea = [NSNumber numberWithInt:livingArea];
+    quotation.storageArea = [NSNumber numberWithInt:storageArea];
+    quotation.fromAddress = from;
+    quotation.toAddress = to;
+    quotation.distance = [NSNumber numberWithDouble:distance];
+    quotation.piano = [NSNumber numberWithBool:inclPiano];
+    
+    return quotation;
+}
+
+#pragma mark - Create and Save
+
+-(void)saveQuotation:(Quotation *)quotation
+{
+    User *user = [self currentUser];
+    [user addQuotationsObject:quotation];
+    quotation.user = user;
+    [self saveManagedContext:self.context];
+    
+    PFObject *object = [self quotationAsParseObject:quotation];
+    [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            NSLog(@"Saved Quotation to parse");
+        } else {
+            NSLog(@"Error saving Quotation to parse: %@", error);
+        }
+    }];
+}
+
+-(void)createOrderWithQuotation:(Quotation *)quotation
+{
+    User *user = [self currentUser];
+    Order *order = [NSEntityDescription insertNewObjectForEntityForName:@"Order" inManagedObjectContext:self.context];
+    order.quotation = quotation;
+    order.user = user;
+    
+    [user addOrdersObject:order];
+    [self saveManagedContext:self.context];
+    
+    
+    PFObject *object = [PFObject objectWithClassName:@"Order"];
+    object[@"quotation"] = [self quotationAsParseObject:quotation];
+    object[@"user"] = [PFUser currentUser];
+    
+    [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            NSLog(@"Saved to parse");
+        } else {
+            NSLog(@"Error saving to parse: %@", error);
+        }
+    }];
+}
+
+#pragma mark - Saved
+
+-(NSArray *)savedObjectsForCurrentUser
+{
+    NSMutableArray *objects = [NSMutableArray new];
+    if ([[self currentUser] quotations]) {
+        [objects addObjectsFromArray:[[[self currentUser] quotations] allObjects]];
+    }
+    if ([[self currentUser] orders]) {
+        [objects addObjectsFromArray:[[[self currentUser] orders] allObjects]];
+    }
+    return [NSArray arrayWithArray:objects];
+}
+
+#pragma mark - Public Help methods
+
+-(BOOL)isAuthenlicated
+{
+    if ([[A0SimpleKeychain keychain] stringForKey:@"password"]) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+-(User *)currentUser
+{
+    User *user;
+    NSString *email = [[A0SimpleKeychain keychain] stringForKey:@"email"];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"User"];
+    request.predicate = [NSPredicate predicateWithFormat:@"eMail == %@" , email];
+    NSArray *result = [self.context executeFetchRequest:request error:Nil];
+    user = [result firstObject];
+    return user;
+}
+
+#pragma mark - Private Help methods
 
 -(Quotation*)quotationFromParseObject:(PFObject*)object
 {
@@ -143,9 +228,7 @@
     quotation.toAddress = [self addressFromParseObject:[object objectForKey:@"toAddress"]];
     quotation.distance = [object objectForKey:@"distance"];
     quotation.piano = [object objectForKey:@"piano"];
-//    if ([self currentUser]) {
-//        quotation.user = [self currentUser];
-//    }
+
     return quotation;
 }
 
@@ -154,9 +237,7 @@
     Order *order = [NSEntityDescription insertNewObjectForEntityForName:@"Order" inManagedObjectContext:self.context];
     Quotation *quotation = [self quotationFromParseObject:[object objectForKey:@"quotation"]];
     order.quotation = quotation;
-//    if ([self currentUser]) {
-//        order.user = [self currentUser];
-//    }
+
     return order;
 }
 
@@ -194,13 +275,6 @@
     updatedUserValuesCount++;
     if (updatedUserValuesCount == 2) {
         updatedUserValuesCount = 0;
-        
-//        User *current = [self currentUser];
-//        for (Order *order in current.orders) {
-//            NSLog(@"con %d, %@", [[current quotations] containsObject:order.quotation], order.quotation.price);
-//            [current removeQuotationsObject:order.quotation];
-//        }
-    
         [[NSNotificationCenter defaultCenter] postNotificationName:@"update" object:self];
     }
 }
@@ -276,68 +350,6 @@
     }];
 }
 
-//-(void)fetchUsersData:(PFUser*)user
-//{
-//    PFQuery *quotationQuery = [PFQuery queryWithClassName:@"Quotation"];
-//    [quotationQuery includeKey:@"fromAddress"];
-//    [quotationQuery includeKey:@"toAddress"];
-//    [quotationQuery whereKey:@"user" equalTo:user];
-//    
-//    [quotationQuery findObjectsInBackgroundWithBlock:^(NSArray *quotations, NSError *error) {
-//        if (!error) {
-//            [self updateCustomerWithQuotations:quotations];
-//        } else {
-//            NSLog(@"Error%@", error);
-//        }
-//    }];
-//    PFQuery *ordersQuery = [PFQuery queryWithClassName:@"Order"];
-//    [ordersQuery includeKey:@"quotation"];
-//    [ordersQuery includeKey:@"quotation.fromAddress"];
-//    [ordersQuery includeKey:@"quotation.toAddress"];
-//    [ordersQuery whereKey:@"user" equalTo:user];
-//    
-//    [ordersQuery findObjectsInBackgroundWithBlock:^(NSArray *orders, NSError *error) {
-//        if (!error) {
-//            [self updateCustomerWithOrders:orders];
-//        } else {
-//            NSLog(@"Error%@", error);
-//        }
-//    }];
-//}
-
--(void)logInUserWithEmail:(NSString*)email andPassword:(NSString*)password
-{
-    if ([self checkIfUserExists:email] && password) {
-        [PFUser logInWithUsernameInBackground:email password:password block:^(PFUser *user, NSError *error) {
-            if (user) {
-                [[A0SimpleKeychain keychain] setString:password forKey:@"password"];
-                [[A0SimpleKeychain keychain] setString:email forKey:@"email"];
-                [self createUser:user];
-                [self fetchUsersData:user];
-                
-                [self.authenticationDelegate notifyDelegateAuthenticationSuccessful:YES];
-            } else {
-                NSLog(@"Error: %@", error);
-                [self.authenticationDelegate notifyDelegateAuthenticationSuccessful:NO];
-            }
-        }];
-    } else {
-        [self.authenticationDelegate notifyDelegateAuthenticationSuccessful:NO];
-    }
-}
-
-#pragma mark -
-
--(void)logOut
-{
-    if ([self currentUser]) {
-        [self.context deleteObject:[self currentUser]];
-    }
-    [[A0SimpleKeychain keychain] deleteEntryForKey:@"password"];
-    [[A0SimpleKeychain keychain] deleteEntryForKey:@"email" ];
-    [PFUser logOut];
-}
-
 -(PFObject*)addressAsParseObject:(Address*)address
 {
     PFObject *object = [PFObject objectWithClassName:@"Address"];
@@ -347,47 +359,6 @@
     object[@"longitude"] = address.longitude;
     object[@"latitude"] = address.latitude;
     return object;
-}
-
--(void)saveQuotation:(Quotation *)quotation
-{
-    User *user = [self currentUser];
-    [user addQuotationsObject:quotation];
-    quotation.user = user;
-    [self saveManagedContext:self.context];
-    
-    PFObject *object = [self quotationAsParseObject:quotation];
-    [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (succeeded) {
-            NSLog(@"Saved Quotation to parse");
-        } else {
-            NSLog(@"Error saving Quotation to parse: %@", error);
-        }
-    }];
-}
-
--(void)createOrderWithQuotation:(Quotation *)quotation
-{
-    User *user = [self currentUser];
-    Order *order = [NSEntityDescription insertNewObjectForEntityForName:@"Order" inManagedObjectContext:self.context];
-    order.quotation = quotation;
-    order.user = user;
-    
-    [user addOrdersObject:order];
-    [self saveManagedContext:self.context];
-    
-    
-    PFObject *object = [PFObject objectWithClassName:@"Order"];
-    object[@"quotation"] = [self quotationAsParseObject:quotation];
-    object[@"user"] = [PFUser currentUser];
-    
-    [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (succeeded) {
-            NSLog(@"Saved to parse");
-        } else {
-            NSLog(@"Error saving to parse: %@", error);
-        }
-    }];
 }
 
 -(PFObject*)quotationAsParseObject:(Quotation*)quotation
@@ -403,22 +374,6 @@
     object[@"user"] = [PFUser currentUser];
     return object;
 }
-
--(NSArray *)savedObjectsForCurrentUser
-{
-    NSMutableArray *objects = [NSMutableArray new];
-    if ([[self currentUser] quotations]) {
-        [objects addObjectsFromArray:[[[self currentUser] quotations] allObjects]];
-    }
-    if ([[self currentUser] orders]) {
-        [objects addObjectsFromArray:[[[self currentUser] orders] allObjects]];
-    }
-    return [NSArray arrayWithArray:objects];
-}
-
-
-
-#pragma mark - Helpmethods
 
 -(BOOL)checkIfUserExists:(NSString*)mail
 {

@@ -26,8 +26,10 @@
 @property (nonatomic) id<DataHandlerDelegate> authenticationDelegate;
 
 +(DataHandler*)sharedDatahandler;
--(BOOL)isAuthenlicated;
--(User*)currentUser;
+
+-(void)createUserWithEmail:(NSString *)email password:(NSString *)password name:(NSString *)name phoneNumber:(NSString *)phoneNumber;
+-(void)logInUserWithEmail:(NSString*)email andPassword:(NSString*)password;
+-(void)logOut;
 
 -(Address*)createAddressWithStreet:(NSString*)street postalCode:(NSString*)postalCode city:(NSString*)city longitude:(float)longitude andLatitude:(float)latitude;
 
@@ -35,12 +37,10 @@
 
 -(void)createOrderWithQuotation:(Quotation*)quotation;
 -(void)saveQuotation:(Quotation*)quotation;
+
 -(NSArray*)savedObjectsForCurrentUser;
 
--(void)createUserWithEmail:(NSString *)email password:(NSString *)password name:(NSString *)name phoneNumber:(NSString *)phoneNumber;
--(void)logInUserWithEmail:(NSString*)email andPassword:(NSString*)password;
--(void)logOut;
-
--(void)test;
+-(BOOL)isAuthenlicated;
+-(User*)currentUser;
 
 @end
