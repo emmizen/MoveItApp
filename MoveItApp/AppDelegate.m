@@ -11,9 +11,6 @@
 #import "DataHandler.h"
 #import <Parse/Parse.h>
 
-@interface AppDelegate ()
-
-@end
 
 @implementation AppDelegate
 

@@ -16,13 +16,16 @@
 
 @interface CreateQuotationViewController ()
 
-@property (weak, nonatomic) IBOutlet UISwitch *pianoSwith;
+
 @property (weak, nonatomic) IBOutlet UITextField *livingAreaTextField;
 @property (weak, nonatomic) IBOutlet UITextField *atticAreaTextField;
 @property (weak, nonatomic) IBOutlet UITextField *basementAreaTextField;
 
 @property (weak, nonatomic) IBOutlet UITextField *fromAddressField;
 @property (weak, nonatomic) IBOutlet UITextField *toAddressfield;
+
+@property (weak, nonatomic) IBOutlet UISwitch *pianoSwith;
+
 @property (weak, nonatomic) IBOutlet UIView *fromAddressView;
 @property (weak, nonatomic) IBOutlet UIView *toAddressView;
 @property (weak, nonatomic) IBOutlet UILabel *fromAddressLabel;
@@ -50,20 +53,6 @@ typedef void (^MyBlock)(CLPlacemark *completionPlacemark);
     
     distanceInKilometers = 0;
     [[DataHandler sharedDatahandler] test];
-}
-
--(void)authenticatedUserToSavedObjects
-{
-    [self performSegueWithIdentifier:@"toOrdersList" sender:self];
-}
-
-- (IBAction)ToListOfSaved:(id)sender
-{
-    if ([[DataHandler sharedDatahandler] isAuthenlicated]) {
-        [self performSegueWithIdentifier:@"toOrdersList" sender:self];
-    } else {
-        [self performSegueWithIdentifier:@"toLogin" sender:self];
-    }
 }
 
 - (IBAction)fromButton:(id)sender
@@ -116,8 +105,7 @@ typedef void (^MyBlock)(CLPlacemark *completionPlacemark);
         double distance = [fromLocation distanceFromLocation:toLocation];
         distanceInKilometers = distance/1000;
     }
-    
-    NSLog(@"Distance %f", distanceInKilometers);
+
     if ([self.livingAreaTextField.text intValue]) {
         prix = [PriceCalculator calculatePriceForLivingArea:[self.livingAreaTextField.text intValue] basementArea:[self.basementAreaTextField.text intValue] atticArea:[self.basementAreaTextField.text intValue] kilometers:distanceInKilometers includingPiano:self.pianoSwith.on];
         NSLog(@"Price %d", prix);
@@ -142,6 +130,20 @@ typedef void (^MyBlock)(CLPlacemark *completionPlacemark);
             NSLog(@"Error %@", error);
         }
     }];
+}
+
+- (IBAction)ToListOfSaved:(id)sender
+{
+    if ([[DataHandler sharedDatahandler] isAuthenlicated]) {
+        [self performSegueWithIdentifier:@"toOrdersList" sender:self];
+    } else {
+        [self performSegueWithIdentifier:@"toLogin" sender:self];
+    }
+}
+
+-(void)authenticatedUserToSavedObjects
+{
+    [self performSegueWithIdentifier:@"toOrdersList" sender:self];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

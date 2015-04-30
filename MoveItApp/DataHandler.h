@@ -15,7 +15,6 @@
 #import "A0SimpleKeychain.h"
 
 @protocol DataHandlerDelegate <NSObject>
-
 @optional
 
 -(void)notifyDelegateAuthenticationSuccessful:(BOOL)isAuthenticated;

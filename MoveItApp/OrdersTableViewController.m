@@ -8,6 +8,7 @@
 
 #import "OrdersTableViewController.h"
 #import "DataHandler.h"
+#import "ShowSavedViewController.h"
 
 @interface OrdersTableViewController ()
 
@@ -17,6 +18,7 @@
 @implementation OrdersTableViewController
 {
     NSArray *mySaved;
+    id selectedObject;
 }
 
 - (void)viewDidLoad {
@@ -64,14 +66,14 @@
     static NSString *cellIdentifier = @"cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     id x = [mySaved objectAtIndex:indexPath.row];
-    NSString *class = [NSString stringWithFormat:@"%@", [x class]];
-    cell.textLabel.text = class;
+    
     if ([x isKindOfClass:[Quotation class]]) {
         Quotation *q = (Quotation*)x;
-        NSLog(@"Dist %.1f", [q.distance doubleValue]);
+        cell.textLabel.text = @"Sparat prisförslag";
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ kr", q.price];
     } else {
         Order *o = (Order*)x;
+        cell.textLabel.text = @"Beställd flytt";
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ kr", o.quotation.price];
     }
     return cell;
@@ -79,26 +81,16 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    id x = [mySaved objectAtIndex:indexPath.row];
-    if ([x isKindOfClass:[Quotation class]]) {
-        Quotation *q = (Quotation*)x;
-        NSLog(@"Tapped: %@", [q description]);
+    selectedObject = [mySaved objectAtIndex:indexPath.row];
+    NSLog(@"Tapped: %@", [selectedObject description]);
+    [self performSegueWithIdentifier:@"showSaved" sender:self];
+}
 
-    } else {
-        Order *o = (Order*)x;
-        NSLog(@"Tapped: %@", [o description]);
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.destinationViewController isKindOfClass:[ShowSavedViewController class]]) {
+        ShowSavedViewController *viewController = (ShowSavedViewController*)segue.destinationViewController;
+        viewController.objectToShow = selectedObject;
     }
 }
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
