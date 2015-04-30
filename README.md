@@ -31,9 +31,7 @@ Appen är fungerande, och gör det den ska. Det finns mycket att förbättra fö
 
 Appen är kopplad till Parse, som är min backend. Där sparas prisförslag och beställningar. Uppgifterna kan hämtas av säljare. Mer om Parse under "Backend"
 
-• Efter att användaren fyllt i prisförslagsuppgifterna ska man kunna komma tillbaka 
-
-prisförslaget igen i samma app. Varje kund ska bara kunna se sina egna offerter.
+• Efter att användaren fyllt i prisförslagsuppgifterna ska man kunna komma tillbaka prisförslaget igen i samma app. Varje kund ska bara kunna se sina egna offerter.
 
 Autentisering sker mot Parse. Inloggad användare kan se sina sparade prisförslag och beställningar i en lista (OrdersTableViewController), och även se detaljer i en egen vy (ShowSavedViewController).
 
@@ -59,11 +57,11 @@ När användaren loggar in hämtas data från parse, min backend tjänst. När a
  
 Core data används för att spara data lokalt.
 
-I "QuotationViewController" viewDidLoad, finns en bortkommenterad rad för att logga path till lokal sql db.
+I "QuotationViewController" viewDidLoad, finns en bortkommenterad rad för att logga path till lokal sql db. Logga om du vill hitta objekten i sql.
 
 #### CoreLocation & MapKit
 
-Används för att söka efter adresser och räkna ut körsträckan mellan två destinationer
+Används för att söka efter adresser och räkna ut körsträckan mellan två destinationer.
 
 #### AppDelegate
 
@@ -85,21 +83,16 @@ Tests finns på PriceCalculator för att kunna validera att uträkningen sker ko
 #### De olika vyerna
 
 ###### LoginViewController
-
-Här kan man skapa nytt konto, eller logga in med befintligt.
+ Här kan man skapa nytt konto, eller logga in med befintligt.
 
 ###### CreateQuotationViewController
-
-Här kan man fylla i uppgifter och skapa ett prisförslag både inloggad och inte.
+ Här kan man fylla i uppgifter och skapa ett prisförslag både inloggad och inte.
 
 ###### QuotationViewController
-
-Här kan man se sitt prisförslag både inloggad och inte.
+ Här kan man se sitt prisförslag både inloggad och inte.
 
 ###### OrdersTableViewController
-
-Här kan man som inloggad se en lista på sparade prisförslag och beställningar.
+ Här kan man som inloggad se en lista på sparade prisförslag och beställningar.
 
 ###### ShowSavedViewController
-
-Här kan man som inloggad se en detaljvy på sparat prisförslag eller beställning.
+ Här kan man som inloggad se en detaljvy på sparat prisförslag eller beställning.
