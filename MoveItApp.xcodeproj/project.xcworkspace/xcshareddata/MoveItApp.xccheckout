@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>892D7193-2CD7-4887-A1CB-8CC25B7080EB</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>MoveItApp</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>7E7B7DFECCBBC0A96F43010754072A100F4A383B</key>
 		<string>https://github.com/emmizen/MoveItApp.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>MoveItApp.xcodeproj/project.xcworkspace</string>
+	<string>MoveItApp.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>7E7B7DFECCBBC0A96F43010754072A100F4A383B</key>

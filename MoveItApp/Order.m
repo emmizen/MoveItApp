@@ -15,4 +15,9 @@
 @dynamic user;
 @dynamic quotation;
 
+-(NSString *)description
+{
+    return [NSString stringWithFormat:@"%@. With quotation: %@.", [self class], [[self quotation] description]];
+}
+
 @end

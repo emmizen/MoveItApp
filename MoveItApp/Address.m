@@ -16,4 +16,9 @@
 @dynamic postalCode;
 @dynamic streetAddress;
 
+-(NSString *)description
+{
+    return [NSString stringWithFormat:@"%@. Street address: %@. Postal code: %@. City: %@.", [self class], [self streetAddress], [self postalCode], [self city]];
+}
+
 @end

@@ -48,10 +48,6 @@
     [self performSegueWithIdentifier:@"fromListToCreate" sender:self];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -68,17 +64,30 @@
     static NSString *cellIdentifier = @"cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     id x = [mySaved objectAtIndex:indexPath.row];
-    NSLog(@"*** %lu %@",[mySaved count], [x class]);
     NSString *class = [NSString stringWithFormat:@"%@", [x class]];
     cell.textLabel.text = class;
     if ([x isKindOfClass:[Quotation class]]) {
         Quotation *q = (Quotation*)x;
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", q.price];
+        NSLog(@"Dist %.1f", [q.distance doubleValue]);
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ kr", q.price];
     } else {
         Order *o = (Order*)x;
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", o.quotation.price];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ kr", o.quotation.price];
     }
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    id x = [mySaved objectAtIndex:indexPath.row];
+    if ([x isKindOfClass:[Quotation class]]) {
+        Quotation *q = (Quotation*)x;
+        NSLog(@"Tapped: %@", [q description]);
+
+    } else {
+        Order *o = (Order*)x;
+        NSLog(@"Tapped: %@", [o description]);
+    }
 }
 
 

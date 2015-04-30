@@ -40,10 +40,11 @@ buttonState;
 {
     _fromAddressField.text = [NSString stringWithFormat:@"Från %@, %@ %@", self.quotation.fromAddress.streetAddress, self.quotation.fromAddress.postalCode, self.quotation.fromAddress.city];
     _toAddressField.text = [NSString stringWithFormat:@"Till %@, %@ %@", self.quotation.toAddress.streetAddress, self.quotation.toAddress.postalCode, self.quotation.toAddress.city];
-    _distanceField.text = [NSString stringWithFormat:@"Vi beräknar att körsträckan är %@km", self.quotation.distance];
+    _distanceField.text = [NSString stringWithFormat:@"Vi beräknar att körsträckan är %.01fkm", [self.quotation.distance doubleValue]];
     _areasField.text = [NSString stringWithFormat:@"Din boendeyta %@kvm + förvaring %@kvm", self.quotation.livingArea , self.quotation.storageArea];
     _pianoField.text = [self.quotation.piano boolValue] ? @"Pianoflytt inkluderad" : @"Ej pianoflytt";
     _priceLabel.text = [NSString stringWithFormat:@"%@ kr", [self.quotation.price stringValue]];
+    
 }
 
 - (IBAction)saveButtonTapped:(id)sender

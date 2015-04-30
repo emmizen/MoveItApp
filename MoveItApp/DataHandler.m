@@ -45,7 +45,7 @@
 -(void)test
 {
     NSLog(@"app dir: %@",[[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject]);
-    //NSLog(@"curr %@", [self currentUser]);
+    //NSLog(@"ord %lu", [[[[self currentUser] quotations] allObjects] count]);
 }
 
 -(BOOL)isAuthenlicated
@@ -131,30 +131,32 @@
     }
 }
 
-//-(void)createUserWithEmail:(NSString *)email password:(NSString *)password name:(NSString *)name phoneNumber:(NSString *)phoneNumber
-//{
-//    [[A0SimpleKeychain keychain] setString:password forKey:@"password"];
-//    [[A0SimpleKeychain keychain] setString:email forKey:@"email"];
-//    
-//    if (![self checkIfUserExists:email]) {
-//        User *user = [NSEntityDescription insertNewObjectForEntityForName:@"User" inManagedObjectContext:self.context];
-//        user.eMail = email;
-//        user.name = name;
-//        user.phoneNumber = phoneNumber;
-//        [self saveManagedContext:self.context];
-//    }
-//    [self.authenticationDelegate notifyDelegateAuthenticationSuccessful:YES];
-//}
-
 #pragma mark - New login
+
+-(Quotation*)quotationFromParseObject:(PFObject*)object
+{
+    Quotation *quotation = [NSEntityDescription insertNewObjectForEntityForName:@"Quotation" inManagedObjectContext:self.context];
+    quotation.price = [object objectForKey:@"price"];
+    quotation.livingArea = [object objectForKey:@"livingArea"];
+    quotation.storageArea = [object objectForKey:@"storageArea"];
+    quotation.fromAddress = [self addressFromParseObject:[object objectForKey:@"fromAddress"]];
+    quotation.toAddress = [self addressFromParseObject:[object objectForKey:@"toAddress"]];
+    quotation.distance = [object objectForKey:@"distance"];
+    quotation.piano = [object objectForKey:@"piano"];
+//    if ([self currentUser]) {
+//        quotation.user = [self currentUser];
+//    }
+    return quotation;
+}
 
 -(Order*)orderFromParseObject:(PFObject*)object
 {
     Order *order = [NSEntityDescription insertNewObjectForEntityForName:@"Order" inManagedObjectContext:self.context];
-    order.quotation = [self quotationFromParseObject:[object objectForKey:@"quotation"]];
-    if ([self currentUser]) {
-        order.user = [self currentUser];
-    }
+    Quotation *quotation = [self quotationFromParseObject:[object objectForKey:@"quotation"]];
+    order.quotation = quotation;
+//    if ([self currentUser]) {
+//        order.user = [self currentUser];
+//    }
     return order;
 }
 
@@ -169,22 +171,6 @@
     return address;
 }
 
--(Quotation*)quotationFromParseObject:(PFObject*)object
-{
-    Quotation *quotation = [NSEntityDescription insertNewObjectForEntityForName:@"Quotation" inManagedObjectContext:self.context];
-    quotation.price = [object objectForKey:@"price"];
-    quotation.livingArea = [object objectForKey:@"livingArea"];
-    quotation.storageArea = [object objectForKey:@"storageArea"];
-    quotation.fromAddress = [self addressFromParseObject:[object objectForKey:@"fromAddress"]];
-    quotation.toAddress = [self addressFromParseObject:[object objectForKey:@"toAddress"]];
-    quotation.distance = [object objectForKey:@"distance"];
-    quotation.piano = [object objectForKey:@"piano"];
-    if ([self currentUser]) {
-        quotation.user = [self currentUser];
-    }
-    return quotation;
-}
-
 -(NSArray*)pfQuotatonsArrayToCoreQuotationsArray:(NSArray*)quotations
 {
     NSMutableArray *result = [NSMutableArray new];
@@ -196,11 +182,11 @@
 
 -(NSArray*)pfOrdersArrayToCoreOrdersArray:(NSArray*)orders
 {
-    NSMutableArray *result = [NSMutableArray new];
+    NSMutableArray *array = [NSMutableArray new];
     for (PFObject *order in orders) {
-        [result addObject:[self orderFromParseObject:order]];
+        [array addObject:[self orderFromParseObject:order]];
     }
-    return result;
+    return array;
 }
 
 -(void)haveUpdate
@@ -208,6 +194,13 @@
     updatedUserValuesCount++;
     if (updatedUserValuesCount == 2) {
         updatedUserValuesCount = 0;
+        
+//        User *current = [self currentUser];
+//        for (Order *order in current.orders) {
+//            NSLog(@"con %d, %@", [[current quotations] containsObject:order.quotation], order.quotation.price);
+//            [current removeQuotationsObject:order.quotation];
+//        }
+    
         [[NSNotificationCenter defaultCenter] postNotificationName:@"update" object:self];
     }
 }
@@ -224,10 +217,11 @@
     }
 }
 
--(void)updateCustomerWithOrdes:(NSArray*)orders
+-(void)updateCustomerWithOrders:(NSArray*)orders
 {
     User *current = [self currentUser];
-    [current addOrders:[NSSet setWithArray:[self pfOrdersArrayToCoreOrdersArray:orders]]];
+    NSArray *a = [self pfOrdersArrayToCoreOrdersArray:orders];
+    [current addOrders:[NSSet setWithArray:a]];
     NSError *error;
     if ([self.context save:&error]) {
         [self haveUpdate];
@@ -247,30 +241,69 @@
 
 -(void)fetchUsersData:(PFUser*)user
 {
-    PFQuery *quotationQuery = [PFQuery queryWithClassName:@"Quotation"];
-    [quotationQuery includeKey:@"fromAddress"];
-    [quotationQuery includeKey:@"toAddress"];
-    [quotationQuery whereKey:@"user" equalTo:user];
-    
-    [quotationQuery findObjectsInBackgroundWithBlock:^(NSArray *quotations, NSError *error) {
-        if (!error) {
-            [self updateCustomerWithQuotations:quotations];
-        } else {
-            NSLog(@"Error%@", error);
-        }
-    }];
     PFQuery *ordersQuery = [PFQuery queryWithClassName:@"Order"];
     [ordersQuery includeKey:@"quotation"];
+    [ordersQuery includeKey:@"quotation.fromAddress"];
+    [ordersQuery includeKey:@"quotation.toAddress"];
     [ordersQuery whereKey:@"user" equalTo:user];
     
     [ordersQuery findObjectsInBackgroundWithBlock:^(NSArray *orders, NSError *error) {
         if (!error) {
-            [self updateCustomerWithOrdes:orders];
+
+            NSMutableArray *array = [NSMutableArray new];
+            for (PFObject *o in orders) {
+                PFObject *obj = [o objectForKey:@"quotation"];
+                [array addObject:obj.objectId];
+            }
+    
+            PFQuery *quotationQuery = [PFQuery queryWithClassName:@"Quotation"];
+            [quotationQuery includeKey:@"fromAddress"];
+            [quotationQuery includeKey:@"toAddress"];
+            [quotationQuery whereKey:@"objectId" notContainedIn:array];
+            [quotationQuery whereKey:@"user" equalTo:user];
+            
+            [quotationQuery findObjectsInBackgroundWithBlock:^(NSArray *quotations, NSError *error) {
+                if (!error) {
+                    [self updateCustomerWithQuotations:quotations];
+                } else {
+                    NSLog(@"Error%@", error);
+                }
+            }];
+            [self updateCustomerWithOrders:orders];
         } else {
             NSLog(@"Error%@", error);
         }
     }];
 }
+
+//-(void)fetchUsersData:(PFUser*)user
+//{
+//    PFQuery *quotationQuery = [PFQuery queryWithClassName:@"Quotation"];
+//    [quotationQuery includeKey:@"fromAddress"];
+//    [quotationQuery includeKey:@"toAddress"];
+//    [quotationQuery whereKey:@"user" equalTo:user];
+//    
+//    [quotationQuery findObjectsInBackgroundWithBlock:^(NSArray *quotations, NSError *error) {
+//        if (!error) {
+//            [self updateCustomerWithQuotations:quotations];
+//        } else {
+//            NSLog(@"Error%@", error);
+//        }
+//    }];
+//    PFQuery *ordersQuery = [PFQuery queryWithClassName:@"Order"];
+//    [ordersQuery includeKey:@"quotation"];
+//    [ordersQuery includeKey:@"quotation.fromAddress"];
+//    [ordersQuery includeKey:@"quotation.toAddress"];
+//    [ordersQuery whereKey:@"user" equalTo:user];
+//    
+//    [ordersQuery findObjectsInBackgroundWithBlock:^(NSArray *orders, NSError *error) {
+//        if (!error) {
+//            [self updateCustomerWithOrders:orders];
+//        } else {
+//            NSLog(@"Error%@", error);
+//        }
+//    }];
+//}
 
 -(void)logInUserWithEmail:(NSString*)email andPassword:(NSString*)password
 {
@@ -323,15 +356,7 @@
     quotation.user = user;
     [self saveManagedContext:self.context];
     
-    PFObject *object = [PFObject objectWithClassName:@"Quotation"];
-    object[@"price"] = quotation.price;
-    object[@"livingArea"] = quotation.livingArea;
-    object[@"storageArea"] = quotation.storageArea;
-    object[@"distance"] = quotation.distance;
-    object[@"piano"] = quotation.piano;
-    object[@"fromAddress"] = [self addressAsParseObject:quotation.fromAddress];
-    object[@"toAddress"] = [self addressAsParseObject:quotation.toAddress];
-    object[@"user"] = [PFUser currentUser];
+    PFObject *object = [self quotationAsParseObject:quotation];
     [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
             NSLog(@"Saved Quotation to parse");
@@ -350,6 +375,33 @@
     
     [user addOrdersObject:order];
     [self saveManagedContext:self.context];
+    
+    
+    PFObject *object = [PFObject objectWithClassName:@"Order"];
+    object[@"quotation"] = [self quotationAsParseObject:quotation];
+    object[@"user"] = [PFUser currentUser];
+    
+    [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            NSLog(@"Saved to parse");
+        } else {
+            NSLog(@"Error saving to parse: %@", error);
+        }
+    }];
+}
+
+-(PFObject*)quotationAsParseObject:(Quotation*)quotation
+{
+    PFObject *object = [PFObject objectWithClassName:@"Quotation"];
+    object[@"price"] = quotation.price;
+    object[@"livingArea"] = quotation.livingArea;
+    object[@"storageArea"] = quotation.storageArea;
+    object[@"distance"] = quotation.distance;
+    object[@"piano"] = quotation.piano;
+    object[@"fromAddress"] = [self addressAsParseObject:quotation.fromAddress];
+    object[@"toAddress"] = [self addressAsParseObject:quotation.toAddress];
+    object[@"user"] = [PFUser currentUser];
+    return object;
 }
 
 -(NSArray *)savedObjectsForCurrentUser
