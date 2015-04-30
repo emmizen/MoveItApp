@@ -8,6 +8,8 @@ För att hämta projektet från command line, stå på destinationen där du vil
 
 Öppna appen i Xcode, kör i iOS simulator iPhone6 (Detta för att jag inte lagt tid på design...).
 
+Skapa nytt konto, eller logga in med testkonto.
+
 ###### Testkonto:
 
 email: test@google.com  
@@ -74,7 +76,7 @@ Hela appen kommunicerar med Datahandler, som i sin tur står för logiken och ar
 
 #### PriceCalculator
 
-Klassen räknar ut pris utifrån givna affärsregler
+Klassen räknar ut pris utifrån givna affärsregler.
 
 #### Tests
 
