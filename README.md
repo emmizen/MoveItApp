@@ -11,7 +11,8 @@ För att hämta projektet från command line, stå på destinationen där du vil
 ###### Testkonto:
 
 email: test@google.com
- password: password
+ 
+password: password
 
 #### Caset och min lösning av MoveItApp
 
@@ -20,16 +21,14 @@ Jag har arbetat utifrån beskrivningen "Case MobileApplication". Jag har tittat 
 **Acceptanskriterier för att lösa uppgiften:**
 
 • Prisberäkning ska ske enligt specifikationen under Affärsregler nedan 
-
+ 
 Klassen "PriceCalculator" räknar ur priset enligt beskrivning. Klassen har även tests för att validera att resultatet blir rätt.
 
 • Lösningen ska baseras på ändamålsenlig interaktionsdesign
 
 Appen är fungerande, och gör det den ska. Det finns mycket att förbättra för att göra den mer användarvänlig och snyggare, men inte med given tid.
 
-• I en förlängnings ska offertförslagen kunna sparas, för att en säljare ska kunna följa upp 
-
-de potentiella kunderna. 
+• I en förlängnings ska offertförslagen kunna sparas, för att en säljare ska kunna följa upp de potentiella kunderna. 
 
 Appen är kopplad till Parse, som är min backend. Där sparas prisförslag och beställningar. Uppgifterna kan hämtas av säljare. Mer om Parse under "Backend"
 
@@ -48,6 +47,8 @@ Autentisering sker mot Parse. I appen sparas email och password säkert i keycha
 
 ###### Parse
 
+För att se sparad data i Parse:
+
 https://www.parse.com/apps/moveit--4/collections
  
 email: emma@schenkman.info  
@@ -56,6 +57,8 @@ email: emma@schenkman.info
 ###### CoreData
  
 Core data används för att spara data lokalt.
+
+I "QuotationViewController" viewDidLoad, finns en bortkommenterad rad för att logga path till lokal sql db.
 
 #### CoreLocation & MapKit
 
@@ -93,11 +96,7 @@ Här kan man fylla i uppgifter och skapa ett prisförslag både inloggad och int
 Här kan man se sitt prisförslag både inloggad och inte.
 
 ###### OrdersTableViewController
-
-Här kan man som inloggad se en lista på sparade prisförslag och beställningar.
+ Här kan man som inloggad se en lista på sparade prisförslag och beställningar.
 
 ###### ShowSavedViewController
-
-Här kan man som inloggad se en detaljvy på sparat prisförslag eller beställning.
-
-
+ Här kan man som inloggad se en detaljvy på sparat prisförslag eller beställning.
