@@ -29,8 +29,11 @@ buttonState;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //Uncomment to log path where to find coreData objets in local sql
+    
+    // *** Uncomment to log path where to find coreData objets in local sql
+    
     // NSLog(@"app dir: %@",[[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject]);
+    
     self.buttonstate = noState;
     [self showQuotationInfo];
     self.navigationController.navigationBar.hidden = YES;
@@ -71,7 +74,7 @@ buttonState;
 
 -(void)authenticatedUserToSavedObjects
 {
-    //if successfully created order or saved, show allert and after that go to list
+    //TODO: Add alert and show if successfully created order or saved and after that go to list
     switch (self.buttonstate) {
         case save:
              [[DataHandler sharedDatahandler] saveQuotation:self.quotation];
@@ -88,13 +91,11 @@ buttonState;
 
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier  isEqualToString:@"quotationToLogin"]) {
         LogInViewController *login = (LogInViewController*)[segue destinationViewController];
         login.sourceViewController = self;
     }
 }
-
 
 @end

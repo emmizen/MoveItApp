@@ -64,7 +64,6 @@
                 
                 [[A0SimpleKeychain keychain] setString:password forKey:@"password"];
                 [[A0SimpleKeychain keychain] setString:email forKey:@"email"];
-                NSLog(@"Success sign up");
                 
                 [self saveManagedContext:self.context];
                 [self.authenticationDelegate notifyDelegateAuthenticationSuccessful:YES];
@@ -173,7 +172,7 @@
     
     [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
-            NSLog(@"Saved to parse");
+            NSLog(@"Saved Order to parse");
         } else {
             NSLog(@"Error saving to parse: %@", error);
         }

@@ -13,7 +13,6 @@
 
 @interface LogInViewController ()<DataHandlerDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
-
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumberTextField;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
@@ -69,7 +68,6 @@
 
 -(void)notifyDelegateAuthenticationSuccessful:(BOOL)isAuthenticated
 {
-    NSLog(@"Authenticated: %d", isAuthenticated);
     if (isAuthenticated) {
         [self.sourceViewController performSelector:@selector(authenticatedUserToSavedObjects)];
         [self dismissViewControllerAnimated:YES completion:^{

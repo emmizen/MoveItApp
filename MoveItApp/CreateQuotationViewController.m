@@ -16,7 +16,6 @@
 
 @interface CreateQuotationViewController ()
 
-
 @property (weak, nonatomic) IBOutlet UITextField *livingAreaTextField;
 @property (weak, nonatomic) IBOutlet UITextField *atticAreaTextField;
 @property (weak, nonatomic) IBOutlet UITextField *basementAreaTextField;
@@ -50,9 +49,7 @@ typedef void (^MyBlock)(CLPlacemark *completionPlacemark);
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.hidesBackButton = YES;
-    
     distanceInKilometers = 0;
-    [[DataHandler sharedDatahandler] test];
 }
 
 - (IBAction)fromButton:(id)sender
@@ -69,7 +66,6 @@ typedef void (^MyBlock)(CLPlacemark *completionPlacemark);
             text = [NSString stringWithFormat:@"%@ %@ \n%@ %@", completionPlacemark.thoroughfare, completionPlacemark.subThoroughfare, completionPlacemark.postalCode, completionPlacemark.locality];
             street = [NSString stringWithFormat:@"%@ %@", completionPlacemark.thoroughfare, completionPlacemark.subThoroughfare];
         }
-        
         movingFrom = [[DataHandler sharedDatahandler] createAddressWithStreet:street postalCode:completionPlacemark.postalCode city:completionPlacemark.locality longitude:fromLocation.coordinate.longitude andLatitude:fromLocation.coordinate.latitude];
         
         self.fromAddressView.hidden = NO;
@@ -93,7 +89,6 @@ typedef void (^MyBlock)(CLPlacemark *completionPlacemark);
             street = [NSString stringWithFormat:@"%@ %@", completionPlacemark.thoroughfare, completionPlacemark.subThoroughfare];
         }
         movingTo = [[DataHandler sharedDatahandler] createAddressWithStreet:street postalCode:completionPlacemark.postalCode city:completionPlacemark.locality longitude:toLocation.coordinate.longitude andLatitude:toLocation.coordinate.latitude];
-        
         self.toAddressLabel.text = text;
         [self.toAddressView setHidden:NO];
     }];
@@ -108,11 +103,10 @@ typedef void (^MyBlock)(CLPlacemark *completionPlacemark);
 
     if ([self.livingAreaTextField.text intValue]) {
         prix = [PriceCalculator calculatePriceForLivingArea:[self.livingAreaTextField.text intValue] basementArea:[self.basementAreaTextField.text intValue] atticArea:[self.basementAreaTextField.text intValue] kilometers:distanceInKilometers includingPiano:self.pianoSwith.on];
-        NSLog(@"Price %d", prix);
         quotation = [[DataHandler sharedDatahandler] createQuotationWithPrice:prix livingArea:[self.livingAreaTextField.text intValue] storageArea:[self.basementAreaTextField.text intValue] + [self.basementAreaTextField.text intValue] fromAddress:movingFrom toAddress:movingTo distance:distanceInKilometers piano:self.pianoSwith.on];
         [self performSegueWithIdentifier:@"toQuotation" sender:self];
     } else {
-        //alert must have some area...
+        //add alert must have some area...
     }
 }
 
@@ -123,11 +117,12 @@ typedef void (^MyBlock)(CLPlacemark *completionPlacemark);
         if (placemarks.count > 0 && placemarks.count < 2) {
             CLPlacemark *placemark = [placemarks firstObject];
             block(placemark);
-            NSLog(@"En matchande adresss: %@ %@ %@, %@ %@", placemark.name, placemark.thoroughfare, placemark.subThoroughfare, placemark.postalCode, placemark.locality);
         } else if (placemarks.count >= 2) {
             NSLog(@"Flera matchande adresser: %lu, %@", [placemarks count], placemarks);
+            //Handle more than one match
         } else {
             NSLog(@"Error %@", error);
+            //Handle error
         }
     }];
 }

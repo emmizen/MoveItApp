@@ -10,11 +10,6 @@
 #import "DataHandler.h"
 #import "ShowSavedViewController.h"
 
-@interface OrdersTableViewController ()
-
-
-@end
-
 @implementation OrdersTableViewController
 {
     NSArray *mySaved;
@@ -82,7 +77,8 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     selectedObject = [mySaved objectAtIndex:indexPath.row];
-    NSLog(@"Tapped: %@", [selectedObject description]);
+    //Uncomment to log tapped object
+    //NSLog(@"Tapped: %@", [selectedObject description]);
     [self performSegueWithIdentifier:@"showSaved" sender:self];
 }
 
