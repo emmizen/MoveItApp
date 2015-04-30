@@ -10,9 +10,8 @@ För att hämta projektet från command line, stå på destinationen där du vil
 
 ###### Testkonto:
 
-email: test@google.com
- 
-password: password
+email: test@google.com  
+ password: password
 
 #### Caset och min lösning av MoveItApp
 
@@ -53,6 +52,8 @@ https://www.parse.com/apps/moveit--4/collections
  
 email: emma@schenkman.info  
  password: password
+ 
+När användaren loggar in hämtas data från parse, min backend tjänst. När användaren vill spara, eller göra en beställning sparas objekten på Parse.
 
 ###### CoreData
  
@@ -70,7 +71,7 @@ När appen startar kollar den om man är inloggad och har sparade/beställda pri
 
 #### DataHandler
 
-Hela appen kommunicerar med Datahandler, som i sin tur sköter står för logiken och arbetet mot Parse. 
+Hela appen kommunicerar med Datahandler, som i sin tur står för logiken och arbetet mot Parse. 
  DataHandler sköter authentisering, skapande av object, hämtar och sparar på Parse.
 
 #### PriceCalculator
@@ -96,7 +97,9 @@ Här kan man fylla i uppgifter och skapa ett prisförslag både inloggad och int
 Här kan man se sitt prisförslag både inloggad och inte.
 
 ###### OrdersTableViewController
- Här kan man som inloggad se en lista på sparade prisförslag och beställningar.
+
+Här kan man som inloggad se en lista på sparade prisförslag och beställningar.
 
 ###### ShowSavedViewController
- Här kan man som inloggad se en detaljvy på sparat prisförslag eller beställning.
+
+Här kan man som inloggad se en detaljvy på sparat prisförslag eller beställning.
