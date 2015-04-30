@@ -741,7 +741,7 @@
                                     <constraint firstAttribute="width" constant="359" id="Mbh-qD-ZVH"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="Mbh-qD-ZVH"/>
@@ -754,7 +754,7 @@
                                     <constraint firstAttribute="width" constant="359" id="emU-zu-SPX"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="emU-zu-SPX"/>
