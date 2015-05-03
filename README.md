@@ -71,9 +71,6 @@ I en version som ska släppas till kund måste errorhanreting läggas till. Nu l
 • Design och olika storlekar på telefon  
 Denna version är inte fungerande på olika storlekar (rekommenderad iphone6). Design behöver beslutas och hantering av olika storlekar.
 
-• Interaktionsdesign  
-jfkdfk dk.
-
 • Tests    
 Tests finns endast för en klass. Det skulle vara bra att lägga till mer test.
 
