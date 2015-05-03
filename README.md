@@ -85,6 +85,9 @@ Logiken skulle kunna vara ett projekt tillgängligt från olika plattformar.
 • Tests    
 Tests finns endast för en klass. Det skulle vara bra att lägga till mer test.
 
+• Autentisering      
+Det finns ingen "reset password"-funktionalitet, detta var inte ett krav, och jag var tvungen att begränsa storleken på uppgiften.
+
 #### AppDelegate
 
 När appen startar kollar den om man är inloggad och har sparade/beställda prisförslag, i så fall startar den i listan (OrdersTableViewController). Annars startar appen i skapa nytt prisförslag (CreateQuotationViewController).
