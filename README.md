@@ -62,32 +62,7 @@ I "QuotationViewController" viewDidLoad, finns en bortkommenterad rad för att l
 
 Används för att söka efter adresser och räkna ut körsträckan mellan två destinationer.
 
-#### Fel och förbättringsförslag
-
-• Errorhantering  
-I en version som ska släppas till kund måste errorhanreting läggas till. Nu loggas error, men hanteras inte.
-
-• Design och olika storlekar på telefon  
-Denna version är inte fungerande på olika storlekar (rekommenderad stl iphone6). Design behöver beslutas och hantering av olika storlekar.
-
-• Interaktionsdesign  
-Information till användaren t.ex. vid misslyckad login, eller om något fält inte fyllts i korrekt. Detta fattas, men skulle vara enkelt att lägga till.  
-För att fylla i informationen till prisförslagen, skulle det kanske kännas lättare att göra detta i flera steg. Detta skulle ge mer plats att hantera om man hittar flera adressmatchningar, och välja en. (Adresssök under nästa punkt)
-
-• CoreLocation och MapKit    
-Jag har inte gjort så mycket innan med CoreLocation och MapKit. Efter lite research verkade detta vara ett bra val för att kunna söka efter adresser, och räkna ut körsträcka. Tyvärr verkar sökningen inte fungera riktigt som önskat. Jag förväntar mig av sökfunktionen att när jag ger lite info, få många träffar, och när jag ger mer info få en bättre filtrerad lista. Här får jag inga träffar (eller en felaktig) med lite info, och fler träffar vid mer info... Googles API kanske hade passat bättre?  
-Det skulle även vara trevligt att lägga till sökförslag undertiden man skriver.  
-Välja adress från karta, och/eller nuvarande plats kan också vara trevligt.
-
-• PriceCalculator    
-Logiken skulle kunna vara ett projekt tillgängligt från olika plattformar.
-
-• Tests    
-Tests finns endast för en klass. Det skulle vara bra att lägga till mer test.
-
-• Autentisering      
-Det finns ingen "reset password"-funktionalitet, detta var inte ett krav, och jag var tvungen att begränsa storleken på uppgiften.
-
+#### Appens olika delar
 #### AppDelegate
 
 När appen startar kollar den om man är inloggad och har sparade/beställda prisförslag, i så fall startar den i listan (OrdersTableViewController). Annars startar appen i skapa nytt prisförslag (CreateQuotationViewController).
@@ -121,3 +96,29 @@ Tests finns på PriceCalculator för att kunna validera att uträkningen sker ko
 
 ###### ShowSavedViewController
  Här kan man som inloggad se en detaljvy på sparat prisförslag eller beställning.
+ 
+#### Fel och förbättringsförslag
+
+• Errorhantering  
+I en version som ska släppas till kund måste errorhanreting läggas till. Nu loggas error, men hanteras inte.
+
+• Design och olika storlekar på telefon  
+Denna version är inte fungerande på olika storlekar (rekommenderad stl iphone6). Design behöver beslutas och hantering av olika storlekar.
+
+• Interaktionsdesign  
+Information till användaren t.ex. vid misslyckad login, eller om något fält inte fyllts i korrekt. Detta fattas, men skulle vara enkelt att lägga till.  
+För att fylla i informationen till prisförslagen, skulle det kanske kännas lättare att göra detta i flera steg. Detta skulle ge mer plats att hantera om man hittar flera adressmatchningar, och välja en. (Adresssök under nästa punkt)
+
+• CoreLocation och MapKit    
+Jag har inte gjort så mycket innan med CoreLocation och MapKit. Efter lite research verkade detta vara ett bra val för att kunna söka efter adresser, och räkna ut körsträcka. Tyvärr verkar sökningen inte fungera riktigt som önskat. Jag förväntar mig av sökfunktionen att när jag ger lite info, få många träffar, och när jag ger mer info få en bättre filtrerad lista. Här får jag inga träffar (eller en felaktig) med lite info, och fler träffar vid mer info... Googles API kanske hade passat bättre?  
+Det skulle även vara trevligt att lägga till sökförslag undertiden man skriver.  
+Välja adress från karta, och/eller nuvarande plats kan också vara trevligt.
+
+• PriceCalculator    
+Logiken skulle kunna vara ett projekt tillgängligt från olika plattformar.
+
+• Tests    
+Tests finns endast för en klass. Det skulle vara bra att lägga till mer test.
+
+• Autentisering      
+Det finns ingen "reset password"-funktionalitet, detta var inte ett krav, och jag var tvungen att begränsa storleken på uppgiften.
